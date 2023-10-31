@@ -1,0 +1,123 @@
+#
+## bspwm hotkeys
+#
+
+# restart bspwm
+super + shift + r
+	bspc wm -r
+
+# close node
+super + q
+	bspc node --close
+
+#
+## state/flags
+#
+# set the window state {tiled, pseudo_tiled}
+super + {_,shift +} t
+	bspc node -t {tiled, pseudo_tiled}
+
+# set {fullscreen, floating}
+super + {_, shift +} f
+	bspc node -t {fullscreen, floating}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+## focus/swap
+#
+
+# focus or send to the given desktop
+super + {_,shift +, ctrl +}{1-9,dead_grave}
+	bspc {desktop -f focused:^,node -d focused:^, node -m next -d }{1-9,10}
+
+# focus monitor/send node to monitor
+#super +{_, shift +} {comma, period}
+	#bspc {monitor -f, node -m} {prev,next}
+
+super + alt {_, shift +} {j, k}
+	bspc {monitor -f, node -m} {prev,next}
+
+super + {_, shift +} Tab
+	bspc {monitor -f, node -m} {prev,next}
+
+# focus last desktop
+#super + Tab 
+	#bspc desktop last --focus
+
+# focus node
+super + {h, j, k, l}
+	bspc node -f {west ,next.,prev.,east }window.local 
+
+# focus next/prev desktop
+super + shift + {j,k}
+	bspc desktop -f {prev,next}
+
+# disable second screen
+super + F8
+	screenmode {main, both}
+	#xrandr --output HDMI-A-0 --off; bspc monitor HDMI-A-0 --remove
+
+
+#
+## move/resize
+#
+
+# send node to given direction
+super + ctrl + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east} windows.local
+
+# send node to next/prev desktop
+super + shift + {h,l}
+	bspc node -d {prev && bspc desktop -f prev,next && bspc desktop -f next}
+
+# switch with biggest node in workspace
+super + space
+	bspc node -f biggest.local && bspc node -s last.local && bspc node -f biggest.local
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0, 0 20, 0 -20, 20 0}
+
+# resize
+super + {ctrl + h,ctrl + j,ctrl + k,ctrl + l}
+	{bspc node -z left -30 0 || bspc node -z right -30 0,	\
+	bspc node -z top 0 30 || bspc node -z bottom  0 30,	\
+	bspc node -z top 0 -30 || bspc node -z bottom  0 -30,	\
+	bspc node -z left 30 0 || bspc node -z right 30 0}
+
+# gap size
+super + {minus, equal}
+	bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))
+
+# cycle nodes  
+super + {apostrophe,semicolon}
+	bspc node '@/' -C {backward,forward}
+
+#
+## preselect
+#
+
+# preselect the direction
+#super + alt + {h,j,k,l}
+	#bspc node -p {west,south,north,east}
+
+# preselect the ratio
+#super + alt + {1-9}
+	#bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+#super + alt + space
+	#bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + alt + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# vim: filetype=sxhkd :

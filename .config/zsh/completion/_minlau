@@ -1,0 +1,89 @@
+#compdef minlau
+
+_minlau(){
+  local -a args
+  if (( CURRENT < 3 )); then
+    args+=(
+      '--launch[Launch a game]'
+      '--install-dxvk[Install dxvk on prefix]'
+      '--uninstall-dxvk[Uninstall dxvk on prefix]'
+      '--winecfg[Open winecfg on prefix]'
+      '--regedit[Open regedit on prefix]'
+      '--winetricks[Open winetricks on prefix]'
+      '--create-prefix[Create a prefix if there is none]'
+      '--delete-prefix[Delete prefix]'
+      '--download-wine[Download and install win]'
+      '--download-dxvk[Download and install dxvk]'
+      '--clear-cache[Delete everything in the cache directory]'
+      '--list-games[List games in config.ini]'
+      '--help[Display help message]'
+    )
+    _arguments $args[@] 
+    return
+  fi
+
+  (( CURRENT > 3 )) || case $words[2] in
+    "--launch") 
+      _list_games
+	 return
+      ;;
+    "--install-dxvk") 
+      _list_games
+	 return
+      ;;
+    "--uninstall-dxvk") 
+      _list_games
+	 return
+      ;;
+    "--winecfg") 
+      _list_games
+	 return
+      ;;
+    "--regedit") 
+      _list_games
+	 return
+      ;;
+    "--winetricks") 
+      _list_games
+	 return
+      ;;
+    "--create-prefix") 
+      _list_games
+	 return
+      ;;
+    "--delete-prefix") 
+      _list_games
+	 return
+      ;;
+    "--download-wine") 
+      _list_builds wine
+	 return
+      ;;
+    "--download-dxvk") 
+      _list_builds dxvk
+	 return
+      ;;
+    "--clear-cache")
+	 return
+      ;;
+    "--list-games")
+	 return
+      ;;
+    "--help")
+	 return
+      ;;
+  esac
+}
+
+_list_games(){
+  _alternative "($(minlau --list-games))"
+}
+
+_list_builds(){
+  _arguments \
+    "--list[List all $1 builds availeble]" \
+    "--update-database[Update version database]"	
+  _alternative "($(minlau --download-$1 --list))"
+}
+
+_minlau

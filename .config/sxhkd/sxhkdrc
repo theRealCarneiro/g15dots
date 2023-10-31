@@ -1,0 +1,219 @@
+# vim: filetype=sxhkdrc :
+#
+## wm independent hotkeys
+#
+
+# kill window
+super + shift + q
+	xdo kill
+
+# close dunst notification
+super + ctrl + space
+	dunstctl close-all
+
+#
+## start programs
+#
+
+# terminal emulator
+super + Return
+	$TERMINAL
+
+# browser
+super + b 
+	$BROWSER
+
+super + w
+	whatsapp-nativefier
+
+# file managers {vifm, pcmanfm}
+super + {_, ctrl +}e 
+	{$TERMINAL -e vifmrun, pcmanfm}
+	
+# dmenu
+super + shift + d 
+	dmenu_run
+
+# rofi
+super + d
+	rofi -show drun 
+
+# rofi sxhkd
+super + shift + s
+	rofi_sxhkd
+
+# passmenu
+super + ctrl + p
+	passmenu
+
+# edit rcfiles 
+super + c 
+	rcfiles
+
+# edit scripts
+super + s
+	editscripts
+
+# game launcher
+super + g
+	gamelaunch
+
+# dmenu calculator
+super + ctrl + c
+	dmenucalc
+
+# toggle scratchpad {fullscreen, bottom}
+super + {ctrl, shift }+ Return
+	scratchpad -g 0 -b 0 -o bottom -w 1920 {-h 1080,  -h 400  }
+	#scratchpad -x 1920 -g 0 -b 0 -o bottom -w 1920 {-h 1080,  -h 400  }
+
+# open calendar
+super + alt + c
+	$TERMINAL --class calendar,calendar -t Calcurse -e calcurse
+
+# dmenu bluetooth prompt
+super + shift + b
+	bluecon
+
+# i3lock
+super + shift + x
+	screenlock
+
+# start droidcam video service
+super + v
+	droidcamcli video
+
+# start droidcam audio service
+super + F6
+	droidcamcli audio
+
+# open mpv with webcam video
+super + shift + v
+	$TERMINAL -e mpv av://v4l2:/dev/video0 --profile=low-latency --untimed
+
+# open mail
+{super + ctrl + m, XF86Mail }
+	$BROWSER gmail.com
+
+# sync mail
+super + shift + m
+	mailsync notify
+
+# force new mail notify
+super + ctrl + shift + m
+	nmlist
+
+#
+## toggle programs
+#
+
+# picom
+super + F10
+	toggle picom 
+
+# polybar
+super + F9
+	toggle -k polybar -c polyLaunch
+#super + F9
+	#toggle polybar polyLaunch "bspc config top_padding 0" "bspc config top_padding 25"
+
+# random bg daemon
+super + ctrl + b
+	toggle randbg
+
+# reload graphical shit
+super + ctrl + r
+	reloenv
+
+# make sxhkd reload its configuration files:
+super + r
+	pkill -USR1 -x sxhkd
+
+# kill gpg
+#super + x
+	#gpg-connect-agent --no-autostart reloadagent /bye && \
+	#notify-send GPG "Restarted agent"
+
+# print to clipboard
+{Print, super + Delete  }
+	maim -u -m 1 -f png | xclip -selection clipboard -t image/png -i \
+	&& notify-send -i Camera "Screenshot" "Copiado para a área de transferencia"
+
+# print selection to clipboard
+super + shift + Delete 
+	maim -s -u -m 1 -f png | xclip -selection clipboard -t image/png -i \
+	&& notify-send -i Camera "Screenshot" "Copiado para a área de transferencia"
+
+# fetch updates and notify
+super + u
+	arch_updates notify
+
+# force random bg daemon to change wpp
+super + shift + w
+	kill -USR1 $(pgrep randbg)
+
+#
+## Audio 
+#
+
+# toggle noisetorch
+super + F1
+	noisetoggle
+
+# open pavucontrol
+super + p
+	pavucontrol
+
+# toggle pulsemeeter
+super + shift + p
+	toggle pulsemeeter --silent
+
+#super + F12
+	#sv restart $HOME/.config/runit/service/pulseaudio \
+	#&& notify-send "Restarted Pulseaudio" -i Audio 
+
+# Toggle Pulseaudio
+super + F12
+	systemctl --user restart pipewire.service \
+	&& notify-send "Restarted Audio Server" -i Audio 
+
+# Toggle BCD
+super + shift + F12
+	toggle BCD
+
+# Start spotifyd
+super + shift + F8
+	{systemctl --user stop spotifyd.service && notify-send "Killed Spotifyd" -i Spotify,
+	systemctl --user start spotifyd.service && notify-send "Started Spotifyd" -i Spotify}
+
+# Play-Pause
+XF86AudioPlay
+	kill -USR2 $(pgrep playerctl_title)
+
+# Prev song
+XF86AudioPrev
+	playerctl --player=spotifyd previous
+
+# Next song
+XF86AudioNext
+	playerctl --player=spotifyd next
+
+#
+## power options
+#
+
+# power menu
+super + F4
+	powermenu
+
+# shutdown 
+super + alt + s
+	prompt "Quer desligar o computador?" "poweroff"		
+
+# reboot
+super + alt + r
+	prompt "Quer reiniciar o computador?" "reboot"
+
+# end x session
+super + shift + e
+	prompt "Quer encerrar a X session?" "killall Xorg"

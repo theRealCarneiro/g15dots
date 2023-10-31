@@ -1,0 +1,293 @@
+{
+
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"empty": "<span font_desc='Font Awesome 6 Free Regular' rise='-1000'></span>",
+			"default": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>",
+			"active": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>",
+			"urgent": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>"
+		},
+		"persistent_workspaces": {
+			"eDP-1": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+			"eDP-2": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+			"HDMI-A-1": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+			"DP-1": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 ]
+		},
+		"on-click": "activate",
+		"on-scroll-up": "hyprwswalk +1",
+		"on-scroll-down": "hyprwswalk -1",
+		"active-only": false,
+		"sort-by-number": true,
+		"all-outputs": false
+	},
+
+	"battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "󰂄 {capacity}%",
+		"format-critical": "󰂃 {capacity}%",
+		//"format-full": "{icon}",
+		"format-full": "{icon} {capacity}%",
+		"tooltip-format": "{capacity}%, {timeTo}",
+		"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+	},
+
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 24,
+		//"icon-theme": "Papirus-Dark",
+		"all-outputs": false,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+		   "Hyprpad",
+		   "Alacritty"
+		],
+		"app_ids-mapping": {
+		  "firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+		"icon-size": 27,
+        "spacing": 10
+    },
+
+    "clock": {
+		"format": "{:%H:%M:%OS}",
+        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%H:%M:%OS %d/%m/%Y}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+			//"mode"          : "year",
+			"mode-mon-col"  : 3,
+			//"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"on-click-right": "mode",
+			"format": {
+				  "months":     "<span color='#EBDBB2'><b>{}</b></span>",
+				  "days":       "<span color='#dfdfdf'><b>{}</b></span>",
+				  "weeks":      "<span color='#fabd2f'><b>W{}</b></span>",
+				  "weekdays":   "<span color='#CC241D'><b>{}</b></span>",
+				  "today":      "<span color='#fb4934'><b><u>{}</u></b></span>"
+			}
+		},
+        "actions":  {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		},
+		"interval": 1
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+		"on-click": "cpu_eaters",
+        "tooltip": false
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "wireplumber": {
+		"format": "{icon}",
+		"tooltip-format": "{node_name} {volume}%",
+		"format-muted": "",
+		//"format-muted": "",
+		"on-scroll-up": "volctrl 5 +",
+		"on-scroll-down": "volctrl 5 -",
+		"on-click": "pavucontrol",
+		"on-click-right": "helvum",
+		"on-click-middle": "mutectrl",
+		"format-icons": ["", "", ""]
+    },
+
+	"backlight": {
+		"format": "{icon}",
+		"tooltip-format": "{percent}%",
+		"device": "nvidia_wmi_ec_backlight",
+		"on-scroll-down": "brightctrl -dec 5 +",
+		"on-scroll-up": "brightctrl -inc 5 +",
+		"format-icons": ["󰃚", "󰃛", "󰃜", "󰃞", "󰃝", "󰃟", "󰃠"]
+	},
+
+	"mpris": {
+		"format": "{player_icon} {dynamic}",
+		"title-len": 20,
+		"dynamic-len": 30,
+		"format-paused": "{status_icon} <i>{dynamic}</i>",
+		"interval": 2,
+		"player-icons": {
+			"default": "▶",
+            "spotify": "",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": "⏸"
+		}
+	},
+
+	"custom/playerctl": {
+		"format": "{icon} {}",
+        "return-type": "json",
+		"max-length": 40,
+        "format-icons": {
+			"brave": "",
+            "spotify": "",
+            //"spotify": "<span color=\"#0f0\"></span>",
+            //"chromium": "<span color=\"#f00\">輸</span>"
+        },
+		"on-click": "pkill -USR2 playerctl_title",
+		"on-click-right": "pkill -USR1 playerctl_title",
+		"exec": "playerctl_title"
+	},
+
+	"custom/swaync": {
+		"tooltip": false,
+		"format": "{icon} {}",
+		"format-icons": {
+			"none": "",
+			"inhibited-none": "",
+			"dnd-inhibited-none": "",
+			"dnd-none": "",
+			"notification": "",
+			"dnd-notification": "<",
+			"inhibited-notification": "",
+			"dnd-inhibited-notification": ""
+
+			//"notification": "<span foreground='red'> </span>",
+			//"dnd-notification": "<span foreground='red'><sup> </sup></span>",
+			//"inhibited-notification": "<span foreground='red'><sup> </sup></span>",
+			//"dnd-inhibited-notification": "<span foreground='red'><sup> </sup></span>"
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "sleep 0.1 && swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+
+	"custom/power": {
+		"format": "",
+        //"format-icons": {
+            //"default": ""
+        //},
+		"on-click": "nwg-bar",
+		//"interval": "once",
+		//"exec": "echo POWER"
+	},
+
+	"custom/menu": {
+		"format": "󰣇",
+		"on-click": "sleep 0.1 && rofi -show drun",
+	},
+
+
+	"custom/memory": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "format-icons": {
+            "default": ""
+        },
+		"on-click": "pkill -USR1 waymemory",
+        "exec": "waymemory"
+	},
+
+	"custom/disk": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "format-icons": {
+            "default": ""
+        },
+		"on-click": "pkill -USR1 waydisk",
+        "exec": "waydisk"
+	},
+
+	"custom/gpu": {
+        "format": "{icon} {}",
+        "return-type": "text",
+        "format-icons": {
+            "default": ""
+        },
+		"on-click": "pkill -USR1 waygpu",
+		"interval": 5,
+        "exec": "waygpu"
+	},
+
+	"custom/email": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "format-icons": {
+            "empty": "",
+			"new": ""
+        },
+		"interval": 5,
+		"on-click": "nmlist",
+		"on-click-right": "$BROWSER gmail.com; hyprctl dispatch focuswindow Brave",
+        "exec": "waymail"
+	},
+
+	"custom/pacman": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "format-icons": {
+            "default": ""
+        },
+		"interval": 5,
+		"on-click-right": "checkcombupdates",
+		"on-click-middle": "$TERMINAL -e paru",
+        "exec": "waypac"
+	},
+
+	"custom/left-arrow": {
+		"format": "",
+		"tooltip": false
+    },
+
+    "custom/left-arrow-inverse": {
+		"format": "",
+		"tooltip": false
+    },
+
+    "custom/right-arrow": {
+		"format": "",
+		"tooltip": false
+    },
+
+    "custom/right-arrow-inverse": {
+		"format": "",
+		"tooltip": false
+    }
+}

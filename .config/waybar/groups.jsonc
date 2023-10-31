@@ -1,0 +1,28 @@
+{
+	"group/stats": {
+		"orientation": "horizontal",
+		"modules": [
+			"battery",
+			"custom/disk",
+			"custom/memory",
+			"cpu"
+		]
+	},
+	"group/updates": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/pacman",
+			"custom/swaync"
+		]
+	},
+	"group/util": {
+		"orientation": "horizontal",
+		"modules": [
+			"backlight",
+			"wireplumber",
+			"idle_inhibitor",
+			"custom/power",
+			"custom/menu"
+		]
+	}
+}

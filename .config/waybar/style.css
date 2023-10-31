@@ -1,0 +1,151 @@
+@import "/home/gabriel/.config/colorfig/generated/colors.css";
+
+
+* {
+	border-radius: 0px;
+    font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrains Mono Nerd Font";
+	font-weight: bold;
+    font-size: 20px;
+}
+
+window#waybar {
+	border: none;
+	background-color: alpha(@theme_base_color, 0.8);
+	transition-property: background-color;
+	box-shadow: none;
+	transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrains Mono Nerd Font";
+	border-radius: 15;
+    font-size: 20px;
+	background-color: @theme_base_color;
+	color: @theme_text_color;
+}
+
+#stats label,
+#util label,
+#updates label{
+	padding: 0 10px;
+}
+
+#clock,
+#updates,
+#util,
+#mpris,
+#stats,
+#tray {
+	color: #dfdfdf;
+	background-color: @theme_base_color;
+	padding: 0 10px;
+	margin: 4px 3px 4px 3px;
+	border-radius: 12px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+#workspaces button.active {
+    padding: 0 5px;
+    background-color: transparent;
+    color: @main;
+}
+
+#workspaces {
+    /*padding: 0 5px;*/
+	background-color: @theme_base_color;
+	margin: 4 3 4 3px;
+	border-radius: 12px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+#workspaces button {
+    padding: 0 5px;
+	box-shadow: 0px 0px;
+    background-color: transparent;
+    /*color: @theme_text_color;*/
+	color:#dfdfdf;
+}
+
+#workspaces button:hover {
+	color: #a0a0a0;
+	box-shadow: none;
+	border: none;
+}
+
+#workspaces > label {
+  font-size: 42px;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#battery.warning {
+	color: @yellow;
+}
+
+#battery.critical {
+	color: @red;
+	box-shadow: inset 0 -1px @red;
+}
+
+#taskbar {
+	margin: 4 2 4 2px;
+	background-color: @theme_base_color;
+	border-radius: 15px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
+	min-width: 100px;
+}
+
+#taskbar button.active {
+	/*box-shadow: inset 0 -1px @main;*/
+	background-color: black;
+	border-radius: 12px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#window {
+    margin: 0 4px;
+}
+
+.modules-left {
+	margin-left: 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+/*.modules-left > widget:first-child > #workspaces {*/
+    /*margin-left: 0px;*/
+/*}*/
+
+/*[> If workspaces is the rightmost module, omit right margin <]*/
+/*.modules-right > widget:last-child > #workspaces {*/
+    /*margin-right: 0px;*/
+/*}*/
+
+/*@keyframes blink {*/
+    /*to {*/
+        /*background-color: #ffffff;*/
+        /*color: #000000;*/
+    /*}*/
+/*}*/
+
+/*label:focus {*/
+    /*background-color: #000000;*/
+/*}*/
+
+/*.muted {*/
+	/*font-size: 25px;*/
+/*}*/
