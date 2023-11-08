@@ -1,0 +1,9 @@
+#!/bin/sh
+
+value=$1
+signal=$2
+
+#set vol
+wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ $value%$signal
+
+audioinfo notify_volume

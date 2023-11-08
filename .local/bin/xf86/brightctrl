@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+xbacklight $@
+val=$(xbacklight -get)
+
+icon='notification-display-brightness-high'
+if [ "$val" -lt "20" ]; then
+	icon='notification-display-brightness-low'
+elif [ "$val" -lt "70" ]; then
+	icon='notification-display-brightness-medium'
+fi
+dunstify -a 'xfctrl' -h string:x-canonical-private-synchronous:backlight 'Backlight' -h int:value:$val -i "$icon" -t 1000

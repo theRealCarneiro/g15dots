@@ -1,0 +1,51 @@
+#!/bin/sh
+
+configpath=$XDG_CONFIG_HOME/colorfig
+themepath=$configpath/themes
+templatepath=$configpath/templates
+genpath=$configpath/generated
+
+mkdir -p $themepath
+mkdir -p $templatepath
+mkdir -p $genpath
+
+templates=$(ls $configpath/templates)
+
+if [ $# -gt 0 ]; then 
+	case $1 in
+		"--theme-dark") 
+			. $themepath/dark/$2.sh
+			theme="$themepath/dark/$2.sh"
+		;;
+
+		"--theme-light")
+			. $themepath/light/$2.sh
+			theme="$themepath/light/$2.sh"
+		;;
+	esac
+else 
+	echo "You gotta use the args man"
+fi
+
+theme="$(sed 's/=.*//; s/;.*//g; s/#.*//g; s/color.*//; /^$/d' $theme)"
+
+for file in $templates; do
+	config="$(cat $templatepath/$file)"
+	for i in $theme; do
+		eval "j="\$$(echo $i | sed 's/\..*//g')""
+		if echo  "$config" | grep "$i.strip" > /dev/null; then
+			#config=$(echo "$config" | sed "s~{$i}~${$j###}~g")
+			config=$(echo "$config" | sed "s/{$i\.strip}/${j###}/g")
+			#echo  "s/{$i\.strip}/${j###}/gp"
+		else
+			config=$(echo "$config" | sed "s~{$i}~$j~g")
+		fi
+	done
+
+	for i in $(seq 0 15); do
+		eval "j="\$color$i""
+		config=$(echo "$config" | sed "s/{color$i\.strip}/${j###}/g")
+		config=$(echo "$config" | sed "s/{color$i}/$j/g")
+	done
+	echo "$config" > $genpath/$file
+done

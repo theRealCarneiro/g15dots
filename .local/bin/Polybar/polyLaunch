@@ -1,0 +1,30 @@
+#!/bin/sh
+
+. $HOME/.config/colorfig/generated/colors.sh 
+#export bg_alpha="#df${background###}"
+bg=$(gtk_colors theme_base_color | sed 's/.* //g')
+
+export fg=$(gtk_colors theme_text_color | sed 's/.* //g')
+export bg_alpha="#f0${bg###}"
+
+polybar-msg cmd quit >/dev/null 2>&1
+
+# main monitor
+#MONITOR=$(xrandr --query | grep " connected \(primary \)\?[0-9]" | cut -d" " -f1)
+#MONITOR=$(xrandr --query | grep " connected primary [0-9]" | cut -d" " -f1)
+#MONITOR=$MONITOR polybar --reload bar 2>&1 | \
+	#tee -a /tmp/polybar.$MONITOR &
+
+
+mons=$(xrandr --query | grep " connected \(primary \)\?[0-9]" | cut -d" " -f1)
+for m in $mons ; do
+
+	# start bar
+	MONITOR=$m polybar --reload bar 2>&1 | tee -a /tmp/polybar.$m &
+
+	# sleep so that main monitor can grab tray
+	sleep 0.1
+done
+
+#MONITOR='DVI-D-0' TRAY_POS=adaptive polybar --reload bar 2>&1 | \
+	#tee -a /tmp/polybar.$MONITOR

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+install=$XDG_DATA_HOME/lutris/runtime/dxvk
+tarball=$XDG_CACHE_HOME/minlau
+mkdir -p "$tarball"
+
+url_lutris="https://api.github.com/repos/lutris/dxvk/releases"
+url_doitsujin="https://api.github.com/repos/doitsujin/dxvk/releases"
+jason="$(curl --silent "$url_lutris") $(curl --silent "$url_doitsujin")"
+
+if [ "$1" = "--list" ]; then
+	ver=$(echo "$jason" | grep "tag_name" | sed 's/.* //g; s/"//g; s/,//g')
+	echo $ver | sed 's/ /\n/g'
+	exit
+fi
+
+if [ -z $1 ]; then
+	ver="$(echo $jason | sed 's/{/\n/g' | grep tag_name | \
+		sed 's/.*tag_name\": \"//' | sed 's/\",.*//' | \
+		rofi -dmenu -p "Escolha a versão:" -no-config -columns 3)"
+	[ "$ver" = "" ] && exit
+else
+	ver="$(echo $1 | sed 's/v//')"
+fi
+
+link=$(echo "$jason"|grep "download_url"|sed 's/.* //g; s/"//g; s/,//g'|grep $ver)
+#link=$(echo "$links" | grep $(echo "$ver" | sed 's/v//'))
+#echo $link
+#link=$(echo $jason | sed 's/{/\n/g' | grep $ver | \
+	#sed 's/}/\n/g' | grep "$ver.tar.gz" | sed 's/.*url": "//g' | \
+	#sed 's/".*//g')
+
+#link=$(echo $link | sed 's/.* //g')
+
+wget -P $tarball $link
+tar -xf $tarball/${link##*/} -C $install
+rm $tarball/${link##*/}

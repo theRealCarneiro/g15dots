@@ -1,0 +1,13 @@
+#!/bin/sh
+
+action=$1
+workspace=$2
+
+monid=$(hyprctl monitors -j | jq '.[] | select(.focused==true) | .id')
+selws=$monid$workspace
+echo $selws
+
+case $action in
+	"focus") hyprctl dispatch workspace $selws ;;
+	"move")	hyprctl dispatch movetoworkspacesilent $selws ;;
+esac

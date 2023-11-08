@@ -1,0 +1,22 @@
+#!/bin/sh
+
+while getopts "c:n:w:" opt; do
+	case $opt in
+		# command
+		"c") cmd="$OPTARG";;
+
+		# client name
+		"n") name="$OPTARG";;
+
+		# scratchpad name
+		"w") scratchpad_name="$OPTARG";;
+	esac
+done
+
+[ -z $scratchpad_name ] && scratchpad_name=$name
+
+if hyprctl clients | grep $name; then
+	hyprctl dispatch togglespecialworkspace $name
+else
+	$cmd
+fi

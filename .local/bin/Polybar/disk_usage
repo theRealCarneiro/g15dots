@@ -1,0 +1,25 @@
+#!/bin/sh
+
+t=0
+
+toggle() {
+	t=$(((t + 1) % 2))
+	[ -z $spid ] || kill $spid
+}
+
+trap "toggle" USR1
+
+print () {
+	if [ $t -eq 0 ]; then
+		df -m | awk '$6 == "/" {printf "%.f%\n", $3*100/$2}'
+	else
+		df -H | awk '$6 == "/" {print $3"B/"$2"B"}'
+	fi
+}
+
+while true; do
+	print
+	sleep 5 &
+	spid=$!
+	wait
+done

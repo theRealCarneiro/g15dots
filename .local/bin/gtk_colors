@@ -1,0 +1,21 @@
+#!/bin/python
+
+import gi, sys
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gio, GLib, Gtk
+
+
+def rgba_to_hex(color):
+    return "#{0:02x}{1:02x}{2:02x}".format( int(color.red   * 255), int(color.green * 255), int(color.blue * 255))
+
+
+def main():
+    window = Gtk.Window()
+    style_context = window.get_style_context()
+
+    for arg in sys.argv[1:]:
+        print(arg, rgba_to_hex(style_context.lookup_color(arg)[1]))
+
+
+if __name__ == '__main__':
+    main()

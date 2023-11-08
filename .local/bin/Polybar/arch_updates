@@ -1,0 +1,38 @@
+#!/bin/sh
+
+tempfile='/tmp/updates'
+
+if [ "$1" = "backup" ]; then
+	pacman -Qqen > /home/gabriel/.cache/packages/pacman
+	pacman -Qqem > /home/gabriel/.cache/packages/aur
+	exit
+fi
+
+if [ "$1" = "clean" ]; then
+	[ -f $tempfile ] && rm $tempfile
+	echo clean
+	exit
+fi
+
+old_count=$(cat $tempfile 2> /dev/null || echo 0)
+
+[ "$1" = 'notify' ] && \
+	dunstify -a "Updates" -u low -i Pacman -r "1" "Buscando atualizações" 
+
+updates_arch=$(checkupdates | cut -d ' ' -f1 2> /dev/null)
+updates_aur=$(paru -Qum 2> /dev/null | cut -d ' ' -f1)
+updates_arch_count=0
+updates_aur_count=0
+
+[ -z "$updates_arch" ] || updates_arch_count=$(echo "$updates_arch" | wc -l)
+[ -z "$updates_aur" ] || updates_aur_count=$(echo "$updates_aur" | wc -l)
+
+updates=$(( $updates_arch_count + $updates_aur_count ))
+
+[ "$updates" -gt "$old_count" -o "$updates" -gt 0 -a "$1" = 'notify' ] && \
+	dunstify -i Pacman -r "1" "Updates" "$updates_arch\n$updates_aur" 
+
+#echo "$updates" > $tempfile
+#echo "$updates_arch\n$updates_aur" > /tmp/update_list
+echo "$updates"
+echo "$updates_arch\n$updates_aur"

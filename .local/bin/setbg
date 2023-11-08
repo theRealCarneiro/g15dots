@@ -1,0 +1,47 @@
+#!/bin/sh
+
+wall="$XDG_CONFIG_HOME/wallpaper"
+wall_home="$HOME/Bibliotecas/Imagens/Wallpapers"
+wal_themes="$HOME/.config/colorfig/themes"
+#wal_themes="$HOME/.config/wal/colorschemes"
+
+rand(){
+	wpp=$(find $wall_home -type f | shuf | head -n1)
+	echo $wpp > $wall
+}
+
+theme(){
+	theme=$1
+	[ "$2" = "light" ] && light="-l"
+	! [ -f "$wal_themes/$2/$theme.sh" ] && exit 1
+	wpp=$(grep wallpaper $wal_themes/$2/$theme.sh | cut -c11-)
+	oldwpp=$(cat $wall)
+	echo $wpp > $wall
+	colorfig --theme-$2 $theme
+	reloenv &
+	#which spicetify &>/dev/null && spicetify apply -n &
+}
+
+generate(){
+	[ $# -eq 0 ] && exit 1
+	wpp=$(realpath $1)
+	! [ -f "$wpp" ] && exit 1
+	echo $wpp > $wall
+	wal -e -i "$wpp"
+	reloenv &
+	#which spicetify &>/dev/null && spicetify apply -n &
+}
+
+[ $# -gt 0 ] && case $1 in
+	"--theme-dark") theme $2 dark ;;
+	"--theme-light") theme $2 light ;;
+	"--generate") generate $2 ;;
+	"--wallpaper") [ -f $(realpath $2) ] && realpath $2 > $wall || exit 1 ;;
+	"--rand") rand ;;
+esac
+
+if pgrep Xorg; then 
+	feh --bg-scale "$(cat $wall)" --no-fehbg
+else
+	swaybg -i "$(cat $wall)" &
+fi

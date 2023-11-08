@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sed -i 's/steam steam:\/\/rungameid/steam -nochatui -nofriendsui -silent steam:\/\/rungameid/g' $HOME/.local/share/applications/*.desktop
+
+notify-send -i steam "Steam" "Games desktop entrys have been fixed"

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+silent=false
+icon=$1
+cmd=$1
+name=$1
+
+while getopts "s:i:c:k:" opt; do
+	case $opt in
+		# silent
+		"s") silent=true;;
+
+		#icon
+		"i") icon="$OPTARG";;
+
+		# command
+		"c") cmd="$OPTARG";;
+
+		# kill name
+		"k") name="$OPTARG";;
+	esac
+done
+
+if pgrep "$name" >/dev/null; then 
+	pkill $name &
+	status='killed'
+else 
+	$cmd &
+	status='started'
+fi
+
+[ $silent = false ] && notify-send -a "Toggle" -u low -r "1" "$name $status" -i "$icon"
+#! [ -z "$4" ] && eval "$4"

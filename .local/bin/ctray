@@ -1,0 +1,59 @@
+#!/usr/bin/python
+
+import gi, os, json
+gi.require_version('Gtk', '3.0')
+gi.require_version('AppIndicator3', '0.1')
+from gi.repository import Gtk as gtk, AppIndicator3 as appindicator
+config_home = os.environ.get('XDG_CONFIG_HOME')
+
+config = json.load(open(os.path.join(config_home, 'ctray/config.json')))
+
+
+def main():
+    indicator = appindicator.Indicator.new("customtray",
+                                           "configuration",
+                                           appindicator.IndicatorCategory.APPLICATION_STATUS)
+
+    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    indicator.set_menu(menu())
+    gtk.main()
+
+
+def menu():
+    menu = gtk.Menu()
+
+    for item in config:
+
+        if item['item'] == 'separator':
+            menu.append(gtk.SeparatorMenuItem())
+            continue
+
+        icon = gtk.Image.new_from_icon_name(item['icon'], gtk.IconSize.MENU)
+        command = gtk.ImageMenuItem(label=item['item'], image=icon)
+        command.connect('activate', exec, item['command'])
+        menu.append(command)
+
+    # command_one = gtk.MenuItem('Wallpaper')
+    # command_one.connect('activate', note)
+    # menu.append(command_one)
+
+    
+    menu.append(gtk.SeparatorMenuItem())
+    exittray = gtk.MenuItem(label='Exit Tray')
+    exittray.connect('activate', quit)
+    menu.append(exittray)
+
+    menu.show_all()
+    return menu
+  
+
+def exec(_, command):
+    os.system(command)
+
+
+def quit(_):
+    gtk.main_quit()
+
+
+if __name__ == "__main__":
+  main()

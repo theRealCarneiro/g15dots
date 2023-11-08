@@ -1,0 +1,27 @@
+#!/bin/sh
+
+t=0
+
+toggle() {
+	t=$(((t + 1) % $(playerctl -a metadata --format '{{playerName}}' | wc -l)))
+}
+
+play_pause(){
+	playerctl -p $player play-pause
+}
+
+trap "play_pause" USR2
+trap "toggle" USR1
+
+while true; do
+	song='{"text": "", "alt": ""}'
+	player_list=$(playerctl -a metadata --format '{{playerName}}' 2>/dev/null)
+	player=$(printf "%s" "$player_list" | sed -n $(($t + 1))'p')
+	[ -z "$player" ] ||
+		song=$(timeout 1 playerctl -p $player metadata --format \
+			'{"text": "{{title}} - {{artist}}", "alt": "{{playerName}}"}')
+	printf "%s\n" "$song"
+	sleep 5 &
+	spid=$!
+	wait
+done

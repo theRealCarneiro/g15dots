@@ -1,0 +1,7 @@
+#!/bin/sh
+
+source="$1"
+
+for _size in "256x256" "48x48" "32x32" "24x24" "16x16"; do
+	convert "$source" -strip -resize "${_size}" "$XDG_DATA_HOME/icons/hicolor/${_size}/apps/$source"
+done

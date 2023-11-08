@@ -1,0 +1,12 @@
+#!/bin/sh
+state=$(( $(hyprctl getoption decoration:blur:enabled -j | jq '.int') * -1 + 1  ))
+rounding=$state
+[ $state = 1 ] && rounding=15
+hyprctl --batch "\
+	keyword decoration:blur:enabled $state;\
+	keyword animations:enabled $state;\
+	keyword decoration:multisample_edges $state;\
+	keyword decoration:drop_shadow $state;\
+	keyword decoration:rounding $rounding"
+[ "$state" = 0 ] && s=OFF || s=ON
+notify-send -a "Hyprland" -u low -r "1" "Hyprland" "Visual effects $s"

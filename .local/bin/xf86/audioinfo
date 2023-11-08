@@ -1,0 +1,38 @@
+#!/bin/sh
+
+get_volume () {
+	vol_str=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f2)
+	awk "BEGIN{printf $vol_str * 100}"
+}
+
+get_mute () {
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f3
+}
+
+get_volume_icon () {
+	vol=$(get_volume)
+	mute=$(get_mute)
+
+	if [ "$mute" = "[MUTED]" ]; then
+		icon='notification-audio-volume-muted'
+	elif [ "$vol" -lt "20" ]; then
+		icon='notification-audio-volume-low'
+	elif [ "$vol" -lt "70" ]; then
+		icon='notification-audio-volume-medium'
+	else
+		icon='notification-audio-volume-high'
+	fi
+	echo $icon
+}
+
+notify_volume () {
+
+	vol=$(get_volume | cut -d ' ' -f2)
+	icon=$(get_volume_icon)
+
+	# notify
+	notify-send -a 'xfctrl' -h string:x-canonical-private-synchronous:audio \
+		'Volume' -h int:value:$vol -i $icon -t 1000
+}
+
+$@

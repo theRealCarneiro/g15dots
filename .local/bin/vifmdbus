@@ -1,0 +1,4 @@
+#!/bin/sh
+args=$@
+#echo $@
+alacritty -e vifm --select "$args"

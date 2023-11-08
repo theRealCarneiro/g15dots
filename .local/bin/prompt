@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if pgrep Xorg; then
+	menu='dmenu -i -p '
+else
+	menu='tofi --prompt-text'
+fi
+
+[ $(printf "%b" 'Não\nSim' | $menu  "$1") = "Sim" ] && $2

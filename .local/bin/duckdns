@@ -1,0 +1,7 @@
+#!/bin/sh
+
+URL="https://www.duckdns.org/update?domains="
+TOKEN="&token=$(pass duckdns/therealcarneiro)"
+DOMAINS="carneiros,therealcarneiro,thecarneiro"
+echo url="$URL$DOMAINS$TOKEN&ip=" | curl -k -o ~/.cache/duckdns/duck.log -K - && \
+	notify-send "duckdns" "$(cat $HOME/.cache/duckdns/duck.log)"

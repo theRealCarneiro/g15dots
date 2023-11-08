@@ -1,0 +1,4 @@
+#!/bin/sh 
+#sxiv -t $(find $HOME/Bibliotecas/Imagens/Wallpapers -type f)
+sxiv -t $(find $HOME/Wallpapers -type f)
+#find Bibliotecas/Imagens/Wallpapers -type f | shuf | sxiv -t

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+text=$(cat /tmp/updates_count 2>/dev/null || echo 0)
+tooltip=$(cat /tmp/updates_combined 2>/dev/null | sed '/^$/d' | sed ':a;N;$!ba;s/\n/\\n/g' || echo No Updates)
+
+printf "%s\n" "{\"text\": \"$text\", \"class\": \"default\", \"tooltip\": \"$tooltip\"}"

@@ -1,0 +1,25 @@
+#!/bin/sh 
+
+t=0
+
+toggle() {
+	t=$(((t + 1) % 2))
+	kill $spid
+}
+
+trap "toggle" USR1
+
+print () {
+	if [ $t -eq 0 ]; then
+		free -m | awk '/^Mem.:/ {printf "%.f%\n", ($2-$7)*100/$2}'
+	else 
+		free -m | awk '/^Mem.:/ {printf "%.1fGB/%.1fGB\n", ($2-$7)/1024, $2/1024}'
+	fi
+}
+
+while true; do
+	print
+	sleep 1 &
+	spid=$!
+	wait
+done

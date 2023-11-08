@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Xorg
+if pgrep Xorg; then
+	xrdb $XDG_CONFIG_HOME/x11/Xresources
+	case $WM in
+		bspwm) bspc wm -r & ;;
+		dwm) dwm-msg run_command reload_xresources & ;;
+	esac
+	polyLaunch &
+
+# Wayland
+else
+	pkill waybar
+	waybar &
+fi
+
+dunstLaunch &
+
+# update tty
+for i in $(seq 0 9); do
+	ls /dev/pts | grep $i >/dev/null && \
+		cat $XDG_CONFIG_HOME/colorfig/generated/sequences > /dev/pts/$i
+done
