@@ -1,0 +1,42 @@
+@import "/home/gabriel/.config/colorfig/generated/colors.css";
+
+window {
+    background-color: alpha(@theme_base_color, 0.95);
+	border-radius: 15px;
+	border: 2px solid @theme_bg_color;
+}
+
+/* Outer bar container, takes all the window width/height */
+#outer-box {
+	margin: 0px
+}
+
+/* Inner bar container, surrounds buttons */
+#inner-box {
+	background-color: alpha(@theme_base_color, 0.95);
+	border-radius: 15px;
+	border-style: none;
+	border-width: 1px;
+	border-color: rgba (156, 142, 122, 0.7);
+	padding: 5px;
+	margin: 5px
+}
+
+button, image {
+	background: none;
+	border: none;
+	box-shadow: none
+}
+
+button {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px;
+	background-color: transparent;
+	color: @theme_text_color;
+}
+
+button:hover {
+	background-color: @theme_text_color;
+	color: @theme_base_color;
+}

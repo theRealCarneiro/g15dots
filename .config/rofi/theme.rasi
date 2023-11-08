@@ -1,0 +1,106 @@
+@import "~/.config/colorfig/generated/colors.rasi"
+* {
+	transparent:		rgba(0,0,0,0);
+	background-color:	@transparent;
+	foreground:			@fg;
+	foreground:			@fg;
+	text-color:			@fg;
+	border:				none;
+	columns:			5;
+	lines:				1;
+	font:				"SF Pro Display Medium 70";
+}
+
+configuration {
+	hover-select:		true;
+	me-select-entry:	"";
+	me-accept-entry:	"MousePrimary";
+	kb-accept-entry:	"";
+}
+
+entry {
+    text-color:        var(normal-foreground);
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: rgba ( 128, 128, 128, 100 % );
+    placeholder:       "Type to filter";
+}
+
+#window {
+    border-color: var(main);
+	border:			4px;
+	fullscreen:		false;
+	anchor:			center;
+	/*width:			100%;*/
+
+	width:				550;
+	height:				150;
+	/*padding:			205;*/
+	border-radius:		15;
+	background-color:	@black;
+	orientation:		horizontal;
+	children:			[ teste,mainbox,teste2 ];
+}
+
+#inputbar {
+	enabled:			false;
+}
+
+#teste {
+	padding:			20;
+	expand:			false;
+}
+
+#teste2{
+	padding:			0;
+	expand:			false;
+}
+
+#textbox {
+	font:				"SF Pro Display 30";
+	border:				0px 0px 0px 0px;
+}
+
+#mainbox {
+	location:			center;
+	expand:				true;
+	children:			[ inputbar, listview ];
+}
+
+listview {
+    scrollbar:    false;
+    border-color: var(transparent);
+}
+
+#prompt {
+	text-color:			@main;
+	border:				0px 0px 0px 0px;
+}
+
+entry {
+	cursor:				"pointer";
+}
+
+element-icon { 
+	size: 2ch; 
+}
+
+entry selected.normal {
+    text-color:			@main;
+	background-color:	@transparent;
+}
+
+element selected.normal{
+    text-color:			@main;
+	background-color:	@transparent;
+}
+
+element normal.normal {
+    background-color:	@transparent;
+    text-color:			@fg;
+}
+
+element alternate.normal {
+    background-color:	@transparent;
+    text-color:			@fg;
+}

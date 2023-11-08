@@ -1,0 +1,70 @@
+configuration {
+	fixed-num-lines: false;
+	auto-select: false;
+	tokenize: false;
+	hide-scrollbar: true;
+	separator-color:	@fg;
+	separatorcolor:	@fg;
+	kb-accept-entry:	"l,Return";
+	kb-row-up:		"k,Up";
+	kb-row-down:		"j,Down";
+}
+
+@import "~/.config/colorfig/generated/colors.rasi"
+* {
+	transparent:		rgba(0,0,0,0);
+	background-color:	@transparent;
+	text-color:			@fg;
+	border:				none;
+	font:				"SF Pro Display 30";
+	lines:				3;
+	columns:			3;
+}
+
+listview {
+    scrollbar:			false;
+    border-color:		var(transparent);
+}
+
+message {
+    border:       0;
+}
+
+#window {
+	width:			200;
+	height:			130;
+	border:			1;
+	border-color:	@black;
+	padding:			10;
+	background-color:	@bg;
+}
+
+#textbox {
+	font:				"SF Pro Display 20";
+	text-color:			@main;
+	border:				0px 0px 2px 0px;
+	border-color:		@main;
+}
+
+#inputbar {
+	enabled:			false;
+}
+
+element {
+    padding:                        2.5% 0% 2.5% 0%;
+}
+
+element selected.normal {
+    text-color:			@main;
+	background-color: @transparent;
+}
+
+element normal.normal {
+    background-color: @transparent;
+    text-color:       @fg;
+}
+
+element alternate.normal {
+    background-color: @transparent;
+    text-color:       @fg;
+}
