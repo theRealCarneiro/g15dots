@@ -31,22 +31,24 @@ local function get_python_dir(workspace)
 end
 
 
-local function py_bin_dir(venv)
-    return path.join(venv, 'bin:')
-end
+--local function py_bin_dir(venv)
+    --return path.join(venv, 'bin:')
+--end
 
 M.env = function(root_dir)
 	local virtual_env
+	local py_bin_dir
 
 	-- Check if already activated a venv
 	if not vim.env.VIRTUAL_ENV or vim.env.VIRTUAL_ENV == '' then
 		virtual_env = get_python_dir(root_dir)
+		py_bin_dir = path.join(virtual_env, 'bin:')
 	end
 
 	-- If venv was found, set venv path and sys PATH
 	if virtual_env ~= '' then
 		vim.env.VIRTUAL_ENV = virtual_env
-		vim.env.PATH = py_bin_dir(virtual_env) .. vim.env.PATH
+		vim.env.PATH = py_bin_dir .. vim.env.PATH
 	end
 
 	-- If venv was found, and PYTHONHOME is set, uset PYTHONHOME
