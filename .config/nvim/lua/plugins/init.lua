@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
 	use { 'theRealCarneiro/nvim-tabline' }
-	use { 'preservim/nerdcommenter' }
+	--use { 'preservim/nerdcommenter' }
 
 	--use { 'kovetskiy/sxhkd-vim' }
 	--use { 'kmonad/kmonad-vim' }
@@ -17,6 +17,13 @@ local packer = require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = {
 			{ 'nvim-lua/plenary.nvim' }
+		}
+	}
+
+	use {
+		'LukasPietzschmann/telescope-tabs',
+		requires = {
+			{ 'nvim-telescope/telescope.nvim' }
 		}
 	}
 
@@ -47,6 +54,12 @@ local packer = require('packer').startup(function(use)
 	}
 
 	use {
+		'numToStr/Comment.nvim',
+		--config = function()
+		--	require('Comment').setup()
+		--end
+	}
+	use {
 		'nvim-neotest/neotest',
 		requires = {
 			{ 'nvim-lua/plenary.nvim' },
@@ -55,17 +68,17 @@ local packer = require('packer').startup(function(use)
 	}
 
 	use {
-		'hrsh7th/nvim-cmp',	requires = {
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'hrsh7th/cmp-cmdline' },
-			{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'onsails/lspkind-nvim' },
-			{ 'windwp/nvim-autopairs' }
-		}
+		'hrsh7th/nvim-cmp', requires = {
+		{ 'hrsh7th/cmp-nvim-lsp' },
+		{ 'hrsh7th/cmp-buffer' },
+		{ 'hrsh7th/cmp-path' },
+		{ 'hrsh7th/cmp-cmdline' },
+		{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
+		{ 'saadparwaiz1/cmp_luasnip' },
+		{ 'L3MON4D3/LuaSnip' },
+		{ 'onsails/lspkind-nvim' },
+		{ 'windwp/nvim-autopairs' }
+	}
 	}
 
 	use {
@@ -75,21 +88,22 @@ local packer = require('packer').startup(function(use)
 			{ 'williamboman/mason-lspconfig.nvim' }
 		}
 	}
-
 end)
 
-require ('plugins.lsp')
-require ('plugins.neotest')
-require ('plugins.cmp')
-require ('plugins.treesitter')
-require ('plugins.tabline')
-require ('plugins.lualine')
-require ('plugins.fern')
+require('plugins.lsp')
+require('plugins.neotest')
+require('plugins.cmp')
+require('plugins.treesitter')
+require('plugins.tabline')
+require('plugins.lualine')
+require('plugins.fern')
+require('plugins.comment')
+require('plugins.telescope')
 
-require ('colorfig').setup()
-require ('telescope').setup{}
-require ('nvim-autopairs').setup{}
-require ('colorizer').setup{}
-require ('gitsigns').setup{}
+require('colorfig').setup()
+require('nvim-autopairs').setup {}
+require('colorizer').setup {}
+require('gitsigns').setup {}
+require('telescope-tabs').setup {}
 
 return packer

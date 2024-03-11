@@ -15,7 +15,7 @@ get_volume_icon () {
 
 	if [ "$mute" = "[MUTED]" ]; then
 		icon='notification-audio-volume-muted'
-	elif [ "$vol" -lt "20" ]; then
+	elif [ "$vol" -lt "10" ]; then
 		icon='notification-audio-volume-low'
 	elif [ "$vol" -lt "70" ]; then
 		icon='notification-audio-volume-medium'
@@ -31,6 +31,7 @@ notify_volume () {
 	icon=$(get_volume_icon)
 
 	# notify
+	echo $vol $icon
 	notify-send -a 'xfctrl' -h string:x-canonical-private-synchronous:audio \
 		'Volume' -h int:value:$vol -i $icon -t 1000
 }

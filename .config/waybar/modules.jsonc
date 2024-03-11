@@ -127,7 +127,7 @@
 		//"format-muted": "",
 		"on-scroll-up": "volctrl 5 +",
 		"on-scroll-down": "volctrl 5 -",
-		"on-click": "pavucontrol",
+		"on-click": "toggle -c pavucontrol -k pavucontrol -s true",
 		"on-click-right": "helvum",
 		"on-click-middle": "mutectrl",
 		"format-icons": ["", "", ""]

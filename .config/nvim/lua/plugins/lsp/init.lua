@@ -1,4 +1,4 @@
-require('neodev').setup{}
+require('neodev').setup {}
 require('mason').setup()
 require('mason-lspconfig').setup()
 
@@ -16,3 +16,7 @@ end)
 lspconfig.pylsp.setup(pylsp)
 lspconfig.lua_ls.setup({})
 lspconfig.clangd.setup({})
+lspconfig.tsserver.setup({})
+lspconfig.jsonls.setup({})
+lspconfig.bashls.setup({})
+lspconfig.yamlls.setup({})

@@ -1,3 +1,4 @@
 #!/bin/sh
 
-alacritty msg create-window $@ || alacritty $@
+#alacritty msg create-window $@ || alacritty $@
+alacritty $@

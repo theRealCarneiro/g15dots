@@ -13,6 +13,7 @@ return {
 
 				flake8 = { enabled = true },
 				pylint = { enabled = true },
+				autopep8 = { enabled = true },
 
 				pycodestyle = { enabled = false },
 				pyflakes = { enabled = false },

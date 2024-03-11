@@ -1,6 +1,6 @@
 #!/bin/sh
 
-files='hyprland bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd Pulse vifm neomutt mbsync pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swayidle swaylock swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer'
+files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk'
 
 if pgrep Xorg > /dev/null 2>&1; then
 	menu='dmenu -i -p'
@@ -9,66 +9,78 @@ else
 fi
 
 files="$(echo $files | sed 's/ /\n/g')"
+# files="$(ls -d $XDG_CONFIG_HOME/*)"
 choice=$(printf "%b" "$files" | sort | $menu "Config: ")
 
 [ -z "$choice" ] && exit
 
-hyprland="$XDG_CONFIG_HOME/hypr"
-bspwm="$XDG_CONFIG_HOME/bspwm/bspwmrc"
-dwm="$HOME/Bibliotecas/Projects/suckless/dwm/config.h"
-spectrwm="$XDG_CONFIG_HOME/spectrwm/spectrwm.conf"
-i3wm="$XDG_CONFIG_HOME/i3/config"
-openbox="$XDG_CONFIG_HOME/openbox/rc.xml"
-sxhkd="$XDG_CONFIG_HOME/sxhkd/"
-nvim="$XDG_CONFIG_HOME/nvim"
-lf="$XDG_CONFIG_HOME/lf/lfrc"
-polybar="$XDG_CONFIG_HOME/polybar/config.ini"
-waybar="$XDG_CONFIG_HOME/waybar/"
-rofi="$XDG_CONFIG_HOME/rofi/config.rasi"
-tofi="$XDG_CONFIG_HOME/tofi/config"
-Xresources="$XDG_CONFIG_HOME/x11/Xresources"
-xprofile="$XDG_CONFIG_HOME/x11/xprofile"
-xmodmap="$XDG_CONFIG_HOME/x11/xmodmap"
-xinitrc="$XDG_CONFIG_HOME/x11/xinitrc"
 profile="$HOME/.profile"
-dunst="$XDG_CONFIG_HOME/dunst/dunstrc"
-zsh="$ZDOTDIR/.zshrc"
 bash="$HOME/.bashrc"
-spotifyd="$XDG_CONFIG_HOME/spotifyd/spotifyd.conf"
-picom="$XDG_CONFIG_HOME/picom/picom.conf"
-alacritty="$XDG_CONFIG_HOME/alacritty/alacritty.yml"
-qutebrowser="$XDG_CONFIG_HOME/qutebrowser/config.py"
-bcd="$HOME/Bibliotecas/Projects/BCD/BCD-3000-Midi-Hotkey/config.h"
-Pulse="$XDG_CONFIG_HOME/pulse/default.pa"
-vifm="$XDG_CONFIG_HOME/vifm/vifmrc"
-neomutt="$XDG_CONFIG_HOME/mutt/muttrc"
-mbsync="$XDG_CONFIG_HOME/isync/mbsyncrc"
-pywal="$XDG_CONFIG_HOME/wal"
-jgmenu="$XDG_CONFIG_HOME/jgmenu/jgmenurc"
-legendary="$XDG_CONFIG_HOME/legendary/config.ini"
-#minlau="/home/games/.config/minlau/config.ini"
-minlau="$XDG_CONFIG_HOME/minlau/config.ini"
-winetkg="$XDG_CONFIG_HOME/frogminer/wine-tkg.cfg"
-paru="$XDG_CONFIG_HOME/paru/paru.conf"
-calcurse="$XDG_CONFIG_HOME/calcurse"
-sxiv="$XDG_CONFIG_HOME/sxiv/exec/key-handler"
-neofetch="$XDG_CONFIG_HOME/neofetch/config.conf"
-colorfig="$XDG_CONFIG_HOME/colorfig/"
-pulsemeeter="$XDG_CONFIG_HOME/pulsemeeter/config.json"
-git="$XDG_CONFIG_HOME/git/config"
-qtile="$XDG_CONFIG_HOME/qtile/config.py"
-kmonad="$XDG_CONFIG_HOME/kmonad/config.kbd"
-systemd="$XDG_CONFIG_HOME/systemd/user"
-swaylock="$XDG_CONFIG_HOME/swaylock/config"
+zsh="$ZDOTDIR/.zshrc"
+
+hypr="$XDG_CONFIG_HOME/hypr"
+bspwm="$XDG_CONFIG_HOME/bspwm/bspwmrc"
+i3wm="$XDG_CONFIG_HOME/i3/config"
+
 swaync="$XDG_CONFIG_HOME/swaync/config.json"
-swayidle="$XDG_CONFIG_HOME/swayidle/config"
-pylint="$XDG_CONFIG_HOME/pylint/pylintrc"
-flake8="$XDG_CONFIG_HOME/flake8"
-pycodestyle="$XDG_CONFIG_HOME/pycodestyle"
+
+sxhkd="$XDG_CONFIG_HOME/sxhkd/"
+kmonad="$XDG_CONFIG_HOME/kmonad/config.kbd"
+
+nvim="$XDG_CONFIG_HOME/nvim"
+git="$XDG_CONFIG_HOME/git/config"
+
 nwg_panel="$XDG_CONFIG_HOME/nwg-panel"
 nwg_dock_hyprland="$XDG_CONFIG_HOME/nwg-dock-hyprland"
 nwg_bar="$XDG_CONFIG_HOME/nwg-bar"
 nwg_drawer="$XDG_CONFIG_HOME/nwg-drawer"
+
+lf="$XDG_CONFIG_HOME/lf/lfrc"
+vifm="$XDG_CONFIG_HOME/vifm/vifmrc"
+
+polybar="$XDG_CONFIG_HOME/polybar/config.ini"
+waybar="$XDG_CONFIG_HOME/waybar/"
 eww="$XDG_CONFIG_HOME/eww"
+
+rofi="$XDG_CONFIG_HOME/rofi/config.rasi"
+tofi="$XDG_CONFIG_HOME/tofi/config"
+jgmenu="$XDG_CONFIG_HOME/jgmenu/jgmenurc"
+
+picom="$XDG_CONFIG_HOME/picom/picom.conf"
+dunst="$XDG_CONFIG_HOME/dunst/dunstrc"
+
+Xresources="$XDG_CONFIG_HOME/x11/Xresources"
+xprofile="$XDG_CONFIG_HOME/x11/xprofile"
+xmodmap="$XDG_CONFIG_HOME/x11/xmodmap"
+xinitrc="$XDG_CONFIG_HOME/x11/xinitrc"
+
+alacritty="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+calcurse="$XDG_CONFIG_HOME/calcurse"
+neofetch="$XDG_CONFIG_HOME/neofetch/config.conf"
+
+neomutt="$XDG_CONFIG_HOME/mutt/muttrc"
+mbsync="$XDG_CONFIG_HOME/isync/mbsyncrc"
+
+pywal="$XDG_CONFIG_HOME/wal"
+colorfig="$XDG_CONFIG_HOME/colorfig/"
+
+legendary="$XDG_CONFIG_HOME/legendary/config.ini"
+minlau="$XDG_CONFIG_HOME/minlau/config.ini"
+winetkg="$XDG_CONFIG_HOME/frogminer/wine-tkg.cfg"
+
+imv="$XDG_CONFIG_HOME/imv/config"
+paru="$XDG_CONFIG_HOME/paru/paru.conf"
+pulsemeeter="$XDG_CONFIG_HOME/pulsemeeter/config.json"
+pulse="$XDG_CONFIG_HOME/pulse/default.pa"
+systemd="$XDG_CONFIG_HOME/systemd/user"
+
+pylint="$XDG_CONFIG_HOME/pylint/pylintrc"
+flake8="$XDG_CONFIG_HOME/flake8"
+pycodestyle="$XDG_CONFIG_HOME/pycodestyle"
+
+firefox="$HOME/.mozilla/firefox/62w4izxv.Gabriel/user.js"
+qutebrowser="$XDG_CONFIG_HOME/qutebrowser/config.py"
+
+qmk="$XDG_CONFIG_HOME/qmk/qmk.ini"
 
 $TERMINAL -e $EDITOR "$(eval "echo \$$choice")"

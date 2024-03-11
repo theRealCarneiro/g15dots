@@ -5,7 +5,7 @@ local luasnip = require('luasnip')
 
 local mappings = require('plugins.cmp.mappings')
 
----@diagnostic disable-next-line missing-fields      
+---@diagnostic disable-next-line missing-fields
 cmp.setup({
 	mapping = mappings,
 
@@ -37,7 +37,7 @@ cmp.setup({
 
 
 -- Set configuration for specific filetype.
----@diagnostic disable-next-line missing-fields      
+---@diagnostic disable-next-line missing-fields
 cmp.setup.filetype('gitcommit', {
 	sources = cmp.config.sources({
 		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
@@ -47,7 +47,7 @@ cmp.setup.filetype('gitcommit', {
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
----@diagnostic disable-next-line missing-fields      
+---@diagnostic disable-next-line missing-fields
 cmp.setup.cmdline('/', {
 	sources = {
 		{ name = 'buffer' }
@@ -55,7 +55,7 @@ cmp.setup.cmdline('/', {
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
----@diagnostic disable-next-line missing-fields      
+---@diagnostic disable-next-line missing-fields
 cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({
 		{ name = 'path' }
@@ -65,6 +65,6 @@ cmp.setup.cmdline(':', {
 })
 
 cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
+	'confirm_done',
+	cmp_autopairs.on_confirm_done()
 )

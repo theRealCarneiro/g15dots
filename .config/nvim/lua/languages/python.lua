@@ -2,24 +2,32 @@ local M = {}
 local pyvenv_root = vim.env.PYVENV_ROOT
 local path = require('lspconfig.util').path
 
-local function get_python_dir(workspace)
+local function search_venv_workspace(workspace)
 
-	-- Find and use virtualenv in workspace directory.
+	-- Check if venv is present in workspace
 	for _, pattern in ipairs { '*', '.*' } do
-
-		-- Check if venv is present in workspace
 		local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
 
 		-- Found venv
 		if match ~= '' then
 			local dirname = path.dirname(match)
-			if dirname == nil then return '' else return dirname end
+			return dirname
+			--if dirname == nil then return '' else return dirname end
 		end
-
 	end
 
+	return nil
+end
+
+local function get_python_dir(workspace)
+
+	-- Find and use virtualenv in workspace directory.
+	local workspace_venv = search_venv_workspace(workspace)
+
+	if workspace_venv ~= nil then return workspace_venv end
+
 	-- If pyvenv root not set, return
-	if pyvenv_root == '' then return ''	end
+	if pyvenv_root == '' then return '' end
 
 	-- Use pyvenv root
 	local project = vim.fn.fnamemodify(workspace, ':t')
@@ -27,12 +35,11 @@ local function get_python_dir(workspace)
 
 	-- If env exists, return path
 	return vim.fn.isdirectory(project_venv) and project_venv or ''
-
 end
 
 
 --local function py_bin_dir(venv)
-    --return path.join(venv, 'bin:')
+--return path.join(venv, 'bin:')
 --end
 
 M.env = function(root_dir)
@@ -51,7 +58,7 @@ M.env = function(root_dir)
 		vim.env.PATH = py_bin_dir .. vim.env.PATH
 	end
 
-	-- If venv was found, and PYTHONHOME is set, uset PYTHONHOME
+	-- If venv was found, and PYTHONHOME is set, unset PYTHONHOME
 	if virtual_env ~= '' and vim.env.PYTHONHOME then
 		vim.env.old_PYTHONHOME = vim.env.PYTHONHOME
 		vim.env.PYTHONHOME = ''

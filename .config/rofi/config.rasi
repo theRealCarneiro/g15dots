@@ -1,18 +1,26 @@
 configuration {
-	modi:				"run,drun,ssh";
-	kb-accept-entry:	"Super+m,Return,KP_Enter";
-	kb-accept-entry:	"Return";
-	kb-row-left:		"super+h";
-	kb-row-right:		"super+l";
-	kb-row-up:			"super+k,Up";
-	kb-row-down:		"super+j,Down";
-	matching:			"fuzzy";
-	show-icons:			true;
-	display-run:		"$ ";
-	display-drun:		"Run: ";
-	display-ssh:		"SSH: ";
+	modi:					"run,drun,ssh";
+	kb-accept-entry:		"Super+m,Return,KP_Enter";
+	kb-accept-entry:		"Return";
+	kb-move-char-back:		"Control+b";
+	kb-move-char-forward:	"Control+f";
+	kb-row-left:			"Left";
+	kb-row-right:			"Right";
+	kb-row-up:				"Up";
+	kb-row-down:			"Down";
+	kb-page-next:			"ScrollDown,Page_Down";
+	kb-page-prev:			"ScrollUp,Page_Up";
+	me-select-entry:		"";
+	me-accept-entry:		"MousePrimary";
+	ml-row-up:				"";
+	ml-row-down:			"";
+	matching:				"fuzzy";
+	show-icons:				true;
+	display-run:			"$ ";
+	display-drun:			"Run: ";
+	display-ssh:			"SSH: ";
 	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	drun-display-format: "{name}";
-	drun-show-actions:		false;
+	drun-display-format:	"{name}";
+	drun-show-actions:		 false;
 }
 @theme "launchpad.rasi"

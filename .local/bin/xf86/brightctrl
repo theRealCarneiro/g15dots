@@ -10,4 +10,4 @@ if [ "$val" -lt "20" ]; then
 elif [ "$val" -lt "70" ]; then
 	icon='notification-display-brightness-medium'
 fi
-dunstify -a 'xfctrl' -h string:x-canonical-private-synchronous:backlight 'Backlight' -h int:value:$val -i "$icon" -t 1000
+notify-send -a 'xfctrl' -h string:x-canonical-private-synchronous:backlight 'Backlight' -h int:value:$val -i "$icon" -t 1000

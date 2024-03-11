@@ -3,9 +3,9 @@ export PATH=$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')
 # Default programs
 export WM="bspwm"
 export EDITOR="nvim"
-export TERMINAL="waylacritty"
+export TERMINAL="alacritty"
 export READER="zathura"
-export BROWSER="brave"
+export BROWSER="firefox"
 
 # Misc
 export SXHKD_SHELL='/bin/sh'
@@ -50,11 +50,12 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 # Data
 export BIB="$HOME/Bibliotecas"
 export XDG_DATA_HOME="$HOME/.local/share"
-export DOTBARE_DIR="$BIB/Projects/Dotfiles"
+export DOTBARE_DIR="$HOME/Projects/g15dots"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/.password-store"
 export GOPATH="$XDG_DATA_HOME/go"
 export PYVENV_ROOT="$XDG_DATA_HOME/python/venvs"
+export QMK_HOME="$HOME/Projects/qmk_firmware"
 
 
 [ -f "/home/gabriel/.config/lf/icons" ] && \

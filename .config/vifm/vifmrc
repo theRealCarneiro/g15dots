@@ -8,6 +8,7 @@
 " ------------------------------------------------------------------------------
 set dotfiles
 source $HOME/.config/vifm/plugins/favicons.vifm
+"fileview */,.*/ tree -L 1 -I .git %c
 
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
@@ -49,6 +50,8 @@ set nofollowlinks
 " Natural sort of (version) numbers within text.
 
 set sortnumbers
+
+set sort=dir,ext
 
 " Maximum number of changes that can be undone.
 
@@ -118,10 +121,16 @@ set statusline="  %A %10u:%-7g %15s %= %T %20d  "
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/.local/bin/
-mark p ~/Bibliotecas/Projects
+mark h ~
 mark c ~/.config
-mark h ~/
+mark b ~/.local/bin/
+mark l ~/.local
+mark s ~/.local/share
+mark p ~/Projects
+mark d ~/Downloads
+mark g /data/games
+mark S /data/games/SteamLibrary/steamapps/common
+mark e /etc
 
 " ------------------------------------------------------------------------------
 
@@ -178,7 +187,7 @@ command! reload :write | restart
 "
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
-fileview */,.*/ tree -L 1 -I .git %c
+fileview */,.*/ tree -C --dirsfirst -L 1 -I .git %c
 
 fileviewer *.ts,*.js,*.html,*.css,*.scss,*.json,*.xml,*.md,*.toml,
 			\ highlight --out-format ansi -t 2 %c
@@ -491,7 +500,8 @@ nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 nnoremap ,w :set wrap!<cr>
 
 " Quit
-nnoremap <C-q> :q!<cr>
+" nnoremap <C-q> :q!<cr>
+nnoremap <space>q :q!<cr>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>
