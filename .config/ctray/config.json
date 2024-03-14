@@ -1,0 +1,25 @@
+[
+    {
+        "item": "Wallpaper",
+        "command": "waypaper",
+        "icon": "image-x-generic-symbolic"
+    },
+    {
+        "item": "Exibição",
+        "command": "nwg-displays",
+        "icon": "video-display-symbolic"
+    },
+    {
+        "item": "Aparência",
+        "command": "nwg-look",
+        "icon": "preferences-desktop-wallpaper-symbolic"
+    },
+    {
+        "item": "separator"
+    },
+    {
+        "item": "Energia",
+        "command": "nwg-bar",
+        "icon": "system-shutdown-symbolic"
+    }
+]
