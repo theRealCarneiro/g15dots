@@ -47,6 +47,7 @@
 		}
 	},
 	"widgets": [
+		"buttons-grid",
 		"volume",
 		"backlight",
 		"title",
@@ -68,6 +69,38 @@
 		},
 		"dnd": {
 			"text": "Do Not Disturb"
+		},
+		"buttons-grid": {
+			"actions": [
+				{
+					"label": "",
+					"type": "toggle",
+					"active": true,
+					"command": "rfkill toggle wifi",
+					"update-command": "bash -c '[ $(nmcli radio wifi) = \"enabled\" ] && echo true || echo false'"
+				},
+				{
+					"label": "",
+					"type": "toggle",
+					"active": true,
+					"command": "rfkill toggle bluetooth",
+					"update-command": "bash -c '[ $(nmcli radio wifi) = \"enabled\" ] && echo true || echo false'"
+				},
+				{
+					"label": "",
+					"type": "toggle",
+					"active": true,
+					"command": "hyprfxtoggle -silent",
+					"update-command": "sh -c '[ $(hyprfxtoggle -get) = 1 ] && echo true || echo false'"
+				},
+				{
+					"label": "",
+					"type": "toggle",
+					"active": false,
+					"command": "pkexec g15fan",
+					"update-command": "sh -c '[ -f /tmp/gameshift ] && echo true || echo false'"
+				}
+			]
 		},
 		"label": {
 			"max-lines": 5,

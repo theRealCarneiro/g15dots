@@ -35,6 +35,7 @@
 	padding: 0;
 }
 
+
 /* Uncomment to enable specific urgency colors
 .low {
 	background: yellow;
@@ -287,19 +288,27 @@
 
 /* Buttons widget */
 .widget-buttons-grid {
-  padding: 8px;
-  margin: 8px;
-  border-radius: 15px;
-  background-color: @theme_base_color;
+	padding: 5px;
+	margin: 5px 10px 5px 10px;
+	border-radius: 10px;
+	background: transparent;
+	font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrainsMono NF";
+	font-size: 25;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button{
-  background: @theme_base_color;
-  border-radius: 15px;
+	background-color: @noti-close-bg;
+	border-radius: 15px;
+	padding: 15px 32px 15px 32px;
+	margin: 5px 10px 10px 10px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
   background: @noti-bg-hover;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+	background-color: @theme_selected_bg_color;
 }
 
 /* Menubar widget */
@@ -369,6 +378,7 @@ font-size: 20px;
   padding: 8px;
   margin: 8px;
   border-radius: 15px;
+  font-size: 50px;
 }
 
 .widget-volume>box>button {
@@ -389,6 +399,7 @@ font-size: 20px;
   padding: 8px;
   margin: 8px;
   border-radius: 15px;
+  font-size: 50px;
 }
 
 /* Title widget */

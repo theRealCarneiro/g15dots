@@ -1,6 +1,6 @@
 #!/bin/sh
 
-files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk'
+files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk ctray'
 
 if pgrep Xorg > /dev/null 2>&1; then
 	menu='dmenu -i -p'
@@ -10,6 +10,7 @@ fi
 
 files="$(echo $files | sed 's/ /\n/g')"
 # files="$(ls -d $XDG_CONFIG_HOME/*)"
+# files=$(ls -p $XDG_CONFIG_HOME/ | grep '/' | tr -d '/')
 choice=$(printf "%b" "$files" | sort | $menu "Config: ")
 
 [ -z "$choice" ] && exit
@@ -82,5 +83,7 @@ firefox="$HOME/.mozilla/firefox/62w4izxv.Gabriel/user.js"
 qutebrowser="$XDG_CONFIG_HOME/qutebrowser/config.py"
 
 qmk="$XDG_CONFIG_HOME/qmk/qmk.ini"
+ctray="$XDG_CONFIG_HOME/ctray/config.json"
 
 $TERMINAL -e $EDITOR "$(eval "echo \$$choice")"
+# $TERMINAL -e vifm "$(eval "echo \$$choice")"

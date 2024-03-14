@@ -14,7 +14,7 @@ source $HOME/.config/vifm/plugins/favicons.vifm
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=nvim
+set vicmd=$EDITOR
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -187,6 +187,45 @@ command! reload :write | restart
 "
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
+
+" VIFMIMG
+fileviewer *.pdf
+        \ vifmimg pdf %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+fileviewer *.djvu
+        \ vifmimg djvu %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+fileviewer *.epub
+        \ vifmimg epub %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+fileviewer <video/*>
+        \ vifmimg video %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+" fileviewer *.jpg,*.png shellpic %c
+fileviewer <image/*>
+        \ vifmimg draw %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+fileviewer <audio/*>
+        \ vifmimg audio %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+fileviewer <font/*>
+        \ vifmimg font %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+
+
 fileview */,.*/ tree -C --dirsfirst -L 1 -I .git %c
 
 fileviewer *.ts,*.js,*.html,*.css,*.scss,*.json,*.xml,*.md,*.toml,
@@ -209,7 +248,7 @@ fileviewer *.ini,*.conf,
 
 " Pdf
 filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
-fileviewer *.pdf pdftotext -nopgbrk %c -
+"fileviewer *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
@@ -395,11 +434,6 @@ filextype */
 "
 " fileviewer *.jpg,*.png shellpic %c
 
-fileviewer *.jpg,*.jpeg,*.png
-           \ vifmimg draw %px %py %pw %ph %c
-           \ %pc
-           \ vifmimg clear
-
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
 " settings).  By default all unknown files are opened with 'vi[x]cmd'
@@ -483,13 +517,13 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 
 " Open console in current directory
-nnoremap ,t :!xterm &<cr>
+nnoremap T :!$TERMINAL &<cr>
 
 " Open editor
 nnoremap e :e<cr>
 
 " Open editor
-nnoremap E :!$TERMINAL -e nvim %f &<cr>
+nnoremap E :!$TERMINAL -e $EDITOR %f &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>

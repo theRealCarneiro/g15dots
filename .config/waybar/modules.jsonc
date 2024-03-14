@@ -143,18 +143,19 @@
 	},
 
 	"mpris": {
-		"format": "{player_icon} {dynamic}",
+		"format": "{player_icon} {dynamic} {status_icon}",
+		"format-paused": "{player_icon} <i>{dynamic}</i> {status_icon}",
 		"title-len": 20,
 		"dynamic-len": 30,
-		"format-paused": "{status_icon} <i>{dynamic}</i>",
 		"interval": 2,
 		"player-icons": {
-			"default": "▶",
+			"default": "󰗃",
             "spotify": "",
 			"mpv": "🎵"
 		},
 		"status-icons": {
-			"paused": "⏸"
+			"playing": "⏸",
+			"paused": "▶"
 		}
 	},
 
