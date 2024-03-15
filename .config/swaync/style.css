@@ -201,7 +201,7 @@
 .control-center {
   /*background: @theme_base_color;*/
   background: alpha(@theme_base_color, 0.8);
-  /*border-radius: 15px;*/
+  border-radius: 0px;
   /*padding-top: 20px;*/
 }
 
@@ -288,19 +288,18 @@
 
 /* Buttons widget */
 .widget-buttons-grid {
-	padding: 5px;
-	margin: 5px 10px 5px 10px;
 	border-radius: 10px;
 	background: transparent;
 	font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrainsMono NF";
-	font-size: 25;
+	font-size: 35px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button{
 	background-color: @noti-close-bg;
 	border-radius: 15px;
+	min-width: 52px;
+	min-height: 40px;
 	padding: 15px 32px 15px 32px;
-	margin: 5px 10px 10px 10px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
