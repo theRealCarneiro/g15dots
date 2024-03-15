@@ -1,0 +1,33 @@
+import = ["/home/gabriel/.config/colorfig/generated/alacritty.toml"]
+
+[cursor]
+style = "Beam"
+vi_mode_style = "Block"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+size		=	14
+offset		=	{ x = 0, y = 0 }
+bold		=	{ family = "JetBrainsMono NF", style = "Bold" }
+bold_italic =	{ family = "JetBrainsMono NF", style = "Bold Italic" }
+italic		=	{ family = "JetBrainsMono NF", style = "Italic" }
+normal		=	{ family = "JetBrainsMono NF", style = "Medium" }
+
+[keyboard]
+bindings = [
+	{ action = "ToggleViMode", key = "Space", mods = "Control" },
+	{ action = "ScrollLineUp", key = "K", mods = "Alt" },
+	{ action = "ScrollLineDown", key = "J", mods = "Alt" },
+	{ action = "ScrollPageUp", key = "K", mods = "Alt|Shift" },
+	{ action = "ScrollPageDown", key = "J", mods = "Alt|Shift" },
+	{ action = "Copy", key = "C", mods = "Control|Shift" },
+	{ action = "Paste", key = "V", mods = "Control|Shift" },
+	{ action = "IncreaseFontSize", key = "Equals", mods = "Alt" },
+	{ action = "DecreaseFontSize", key = "Minus", mods = "Alt" },
+	{ action = "ResetFontSize", key = "Equals", mods = "Control|Alt" }
+]
+
+[window]
+opacity = 0.9
