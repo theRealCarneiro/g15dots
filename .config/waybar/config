@@ -12,8 +12,10 @@
 		],
 
 		"modules-left": [
+			"clock",
 			"group/stats",
-			"mpris"
+			"group/updates"
+			// "mpris"
 		],
 
 		"modules-center": [
@@ -21,8 +23,6 @@
 		],
 
 		"modules-right": [
-			"clock",
-			"group/updates",
 			"tray",
 			"group/util"
 		]

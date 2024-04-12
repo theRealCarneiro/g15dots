@@ -9,7 +9,7 @@ super + shift + q
 
 # close dunst notification
 super + ctrl + space
-	dunstctl close-all
+	swaync-client -C
 
 #
 ## start programs

@@ -1,3 +1,4 @@
+//vim: filetype=rasi :
 configuration {
 	modi:					"run,drun,ssh";
 	kb-accept-entry:		"Super+m,Return,KP_Enter";

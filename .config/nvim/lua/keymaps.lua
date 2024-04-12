@@ -22,7 +22,7 @@ vim.keymap.set({'n', 'v'}, '<leader>y', '"+y')
 
 -- Paste
 -- vim.keymap.set('i', '<C-v>', '<Esc>"*p')
-vim.keymap.set({'n', 'v'}, '<leader>p', '<Esc>"+p')
+vim.keymap.set({'n', 'v'}, '<leader>p', '"+p')
 
 -- Fern
 vim.keymap.set('n', '<leader>f', ':Fern %:h -drawer -toggle <CR>', { silent = true })

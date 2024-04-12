@@ -7,7 +7,12 @@
 
 " ------------------------------------------------------------------------------
 set dotfiles
-source $HOME/.config/vifm/plugins/favicons.vifm
+set relativenumber
+set number
+
+source /usr/share/vifm-devicons/favicons.vifm
+"source $HOME/.config/vifm/plugins/favicons.vifm
+
 "fileview */,.*/ tree -L 1 -I .git %c
 
 " Command used to edit files in various contexts.  The default is vim.
@@ -15,8 +20,6 @@ source $HOME/.config/vifm/plugins/favicons.vifm
 " you will need to change this setting.
 
 set vicmd=$EDITOR
-" set vicmd=elvis\ -G\ termcap
-" set vicmd=vile
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -209,32 +212,32 @@ fileviewer <video/*>
         \ %pc
         \ vifmimg clear
 
-" fileviewer *.jpg,*.png shellpic %c
+"fileviewer *.jpg,*.png cat %c
 fileviewer <image/*>
-        \ vifmimg draw %px %py %pw %ph %c
-        \ %pc
-        \ vifmimg clear
+         \ vifmimg draw %px %py %pw %ph %c &
+         \ %pc
+         \ vifmimg clear
 
 fileviewer <audio/*>
-        \ vifmimg audio %px %py %pw %ph %c
+        \ vifmimg audio %px %py %pw %ph %c &
         \ %pc
         \ vifmimg clear
 
 fileviewer <font/*>
-        \ vifmimg font %px %py %pw %ph %c
+        \ vifmimg font %px %py %pw %ph %c &
         \ %pc
         \ vifmimg clear
 
 
 fileview */,.*/ tree -C --dirsfirst -L 1 -I .git %c
 
-fileviewer *.ts,*.js,*.html,*.css,*.scss,*.json,*.xml,*.md,*.toml,
+fileviewer *.ts,*.js,*.html,*.css,*.scss,*.json,*.xml,*.md,*.toml
 			\ highlight --out-format ansi -t 2 %c
 
-fileviewer *.c,*.h,*.cpp,*.sh,makefile
+fileviewer *.c,*.h,*.cpp,*.hpp,*.sh,makefile
 			\ highlight --out-format ansi -t 2 %c
 
-fileviewer *.py,*.yml
+fileviewer *.py,*.yml,*.lua,*.vim
 			\ highlight --out-format ansi -t 2 %c
 
 fileviewer .bashrc,.profile,.zprofile,.zshrc,*.zsh*,
@@ -243,7 +246,7 @@ fileviewer .bashrc,.profile,.zprofile,.zshrc,*.zsh*,
 fileviewer bspwmrc,sxhkdrc,
 			\ highlight --out-format ansi -t 2 -S sh %c
 
-fileviewer *.ini,*.conf,
+fileviewer *.ini,*.conf,*.cfg
 			\ highlight --out-format ansi -t 2 %c
 
 " Pdf
@@ -306,7 +309,9 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+filextype <image/*>
+        \ {View in imv}
+        \ imv %f $(dirname %f) &,
         \ {View in sxiv}
         \ sxiv %f $(dirname %f) &,
         \ {View in gpicview}
@@ -420,8 +425,8 @@ filextype */
 " Explicitly set highlight type for some extensions
 "
 " 256-color terminal
-" fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
-" fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
+"fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
+"fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
 "
 " 16-color terminal
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
@@ -536,6 +541,7 @@ nnoremap ,w :set wrap!<cr>
 " Quit
 " nnoremap <C-q> :q!<cr>
 nnoremap <space>q :q!<cr>
+nnoremap <space> <Nop>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>

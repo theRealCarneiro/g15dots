@@ -1,9 +1,9 @@
 [Default Applications]
-x-scheme-handler/nxm=modorganizer2-nxm-handler.desktop
+x-scheme-handler/nxm=modorganizer2-nxm-handler.desktop;
 x-scheme-handler/ror2mm=r2modman.desktop
 x-scheme-handler/http=firefox.desktop;brave-browser.desktop;
 x-scheme-handler/https=firefox.desktop;brave-browser.desktop;
-text/plain=nvim.desktop
+text/plain=nvim.desktop;
 text/plain=nvim.desktop;
 text/html=nvim.desktop;
 text/css=nvim.desktop;
@@ -23,10 +23,11 @@ text/x-asm=nvim.desktop;
 text/x-matlab=nvim.desktop;
 text/x-fortran=nvim.desktop;
 text/csv=nvim.desktop;
-application/xml=nvim.desktop
-application/json=nvim.desktop
-image/png=imv.desktop
-image/jpeg=imv.desktop
+application/xml=nvim.desktop;
+application/json=nvim.desktop;
+image/png=imv.desktop;
+image/jpeg=imv.desktop;
+image/webp=imv.desktop;
 inode/directory=vifm.desktop;pcmanfm.desktop;
 
 [Added Associations]
@@ -35,3 +36,4 @@ application/xml=nvim.desktop;
 application/json=nvim.desktop;
 image/png=imv.desktop;
 image/jpeg=imv.desktop;
+image/webp=imv.desktop;

@@ -6,6 +6,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export READER="zathura"
 export BROWSER="firefox"
+export TERMFM="vifmrun"
 
 # Misc
 export SXHKD_SHELL='/bin/sh'
@@ -56,6 +57,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/.password-store"
 export GOPATH="$XDG_DATA_HOME/go"
 export PYVENV_ROOT="$XDG_DATA_HOME/python/venvs"
 export QMK_HOME="$HOME/Projects/qmk_firmware"
+# export PYTHONPATH="${PYTHONPATH}:/my/other/path"
 
 
 [ -f "/home/gabriel/.config/lf/icons" ] && \

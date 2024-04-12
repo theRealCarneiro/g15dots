@@ -9,16 +9,6 @@ config_home = os.environ.get('XDG_CONFIG_HOME')
 config = json.load(open(os.path.join(config_home, 'ctray/config.json')))
 
 
-def main():
-    indicator = appindicator.Indicator.new("customtray",
-                                           "configuration",
-                                           appindicator.IndicatorCategory.APPLICATION_STATUS)
-
-    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
-    indicator.set_menu(menu())
-    gtk.main()
-
-
 def menu():
     menu = gtk.Menu()
 
@@ -37,7 +27,6 @@ def menu():
     # command_one.connect('activate', note)
     # menu.append(command_one)
 
-    
     menu.append(gtk.SeparatorMenuItem())
     exittray = gtk.MenuItem(label='Exit Tray')
     exittray.connect('activate', quit)
@@ -45,7 +34,7 @@ def menu():
 
     menu.show_all()
     return menu
-  
+
 
 def exec(_, command):
     os.system(command)
@@ -55,5 +44,15 @@ def quit(_):
     gtk.main_quit()
 
 
+def main():
+    indicator = appindicator.Indicator.new("customtray",
+                                           "configuration",
+                                           appindicator.IndicatorCategory.APPLICATION_STATUS)
+
+    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    indicator.set_menu(menu())
+    gtk.main()
+
+
 if __name__ == "__main__":
-  main()
+    main()

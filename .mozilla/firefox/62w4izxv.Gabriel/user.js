@@ -559,7 +559,7 @@ user_pref("pdfjs.disabled", false); // [DEFAULT: false]
 user_pref("pdfjs.enableScripting", false); // [FF86+]
 // -------------------------------------
 // Disable middle click on new tab button opening URLs or searches using clipboard [FF115+]
-user_pref("browser.tabs.searchclipboardfor.middleclick", false); // [DEFAULT: false NON-LINUX]
+//user_pref("browser.tabs.searchclipboardfor.middleclick", false); // [DEFAULT: false NON-LINUX]
 // -------------------------------------
 // Disable the default checkedness for "Save card and address to Firefox" checkboxes
 user_pref("dom.payments.defaults.saveAddress", false);
@@ -1070,7 +1070,7 @@ user_pref("browser.search.update", false);
 // CONTENT BEHAVIOR
 //
 user_pref("accessibility.typeaheadfind", false); // enable "Find As You Type"
-user_pref("clipboard.autocopy", false); // disable autocopy default [LINUX]
+//user_pref("clipboard.autocopy", true); // disable autocopy default [LINUX]
 user_pref("layout.spellcheckDefault", 0); // 0=none, 1-multi-line, 2=multi-line & single-line
 //
 // FIREFOX HOME CONTENT
@@ -1245,6 +1245,6 @@ user_pref("places.history.enabled", true);
 
 user_pref("media.hardware-video-decoding.force-enabled", true);
 user_pref("media.gmp-provider.enabled", true);
-user_pref("media.gmp-gmpopenh264.enabled, true);
-// user_pref("media.peerconnection.enabled", true);
+user_pref("media.gmp-gmpopenh264.enabled", true);
+user_pref("media.peerconnection.enabled", true);
 user_pref("browser.fullscreen.autohide", false);

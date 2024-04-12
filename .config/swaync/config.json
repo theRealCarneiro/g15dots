@@ -44,6 +44,11 @@
 		"volume_notification": {
 			"app-name": "xfctrl",
 			"state": "transient"
+		},
+
+		"spotify": {
+			"app-name": "spotify",
+			"state": "transient"
 		}
 	},
 	"widgets": [
@@ -75,16 +80,16 @@
 				{
 					"label": "",
 					"type": "toggle",
-					"active": true,
+					"active": false,
 					"command": "rfkill toggle wifi",
-					"update-command": "bash -c '[ $(nmcli radio wifi) = \"enabled\" ] && echo true || echo false'"
+					"update-command": "sh -c '[ $(nmcli radio wifi) = \"enabled\" ] && echo true || echo false'"
 				},
 				{
 					"label": "",
 					"type": "toggle",
 					"active": true,
 					"command": "rfkill toggle bluetooth",
-					"update-command": "bash -c '[ $(nmcli radio wifi) = \"enabled\" ] && echo true || echo false'"
+					"update-command": "sh -c '[ $(bluetoothctl show | grep Powered | cut -d \" \" -f2) = no ] && echo false || echo true'"
 				},
 				{
 					"label": "",
@@ -97,8 +102,8 @@
 					"label": "",
 					"type": "toggle",
 					"active": false,
-					"command": "pkexec g15fan",
-					"update-command": "sh -c '[ -f /tmp/gameshift ] && echo true || echo false'"
+					"command": "g15pc -t",
+					"update-command": "sh -c '[ $(g15pc -gg) = 'True' ] && echo true || echo false'"
 				}
 			]
 		},

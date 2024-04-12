@@ -8,14 +8,16 @@ if pgrep Xorg; then
 		dwm) dwm-msg run_command reload_xresources & ;;
 	esac
 	polyLaunch &
+	dunstLaunch &
 
 # Wayland
 else
 	pkill waybar
+	pkill swaync
 	waybar &
+	swaync &
 fi
 
-dunstLaunch &
 
 # update tty
 for i in $(seq 0 9); do

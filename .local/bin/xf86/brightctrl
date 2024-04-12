@@ -1,8 +1,8 @@
 #!/bin/sh
 
+percent=$1
 
-xbacklight $@
-val=$(xbacklight -get)
+val=$(brightnessctl -c 'backlight' s $percent | awk '/Current/{gsub(/[^0-9]/,"", $4); print $4}')
 
 icon='notification-display-brightness-high'
 if [ "$val" -lt "20" ]; then

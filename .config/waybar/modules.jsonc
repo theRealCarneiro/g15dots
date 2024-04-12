@@ -137,8 +137,8 @@
 		"format": "{icon}",
 		"tooltip-format": "{percent}%",
 		"device": "nvidia_wmi_ec_backlight",
-		"on-scroll-down": "brightctrl -dec 5 +",
-		"on-scroll-up": "brightctrl -inc 5 +",
+		"on-scroll-down": "brightctrl 5%-",
+		"on-scroll-up": "brightctrl 5%+",
 		"format-icons": ["󰃚", "󰃛", "󰃜", "󰃞", "󰃝", "󰃟", "󰃠"]
 	},
 
