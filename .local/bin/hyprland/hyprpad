@@ -15,6 +15,9 @@ toggle (){
 
 	# move to selected workspace
 	hyprctl dispatch movetoworkspacesilent $selws,hyprpad
+
+	# sleep 0.1
+	# [ "$selws" = "special:hyprpad" ] && hyprctl dispatch togglespecialworkspace hyprpad
 }
 
 # get active and hyprpad workspaces and monitor
@@ -32,7 +35,7 @@ width=$(echo "$selmon" | jq '.width')
 pad_height=$(( $height * 4 / 10 ))
 pady=$(( $mony + $height - $pad_height ))
 
-# check if hyprpad is running
+# check if hyprpad is running, then create/move window
 hyprctl clients | grep -q Hyprpad && toggle $padws $selws || create
 
 # resize and position

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+direction=$1
+hyprctl activewindow | grep 'floating: 1' && hyprctl dispatch cycle$direction || hyprctl dispatch layoutmsg cycle$direction
