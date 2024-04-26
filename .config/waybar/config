@@ -12,10 +12,10 @@
 		],
 
 		"modules-left": [
-			"clock",
+			"group/updates",
 			"group/stats",
-			"group/updates"
-			// "mpris"
+			"group/clocks",
+			"group/music"
 		],
 
 		"modules-center": [
@@ -24,7 +24,8 @@
 
 		"modules-right": [
 			"tray",
-			"group/util"
+			"group/util",
+			"group/powerdrawer"
 		]
 	}
 ]

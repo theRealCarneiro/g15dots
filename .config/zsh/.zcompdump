@@ -1,4 +1,4 @@
-#files: 989	version: 5.9
+#files: 994	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -310,6 +310,10 @@ _comps=(
 'dsh' '_dsh'
 'dtruss' '_dtruss'
 'du' '_du'
+'_dunst' '_dunst'
+'dunst' '_dunst'
+'_dunstctl' '_dunstctl'
+'dunstctl' '_dunstctl'
 'dvibook' '_dvi'
 'dviconcat' '_dvi'
 'dvicopy' '_dvi'
@@ -655,6 +659,8 @@ _comps=(
 'htop' '_htop'
 'http' '_httpie'
 'https' '_httpie'
+'hyprctl' '_hyprctl'
+'hyprpm' '_hyprpm'
 'ibus' '_ibus'
 'iceweasel' '_mozilla'
 'icombine' '_ispell'
@@ -719,6 +725,7 @@ _comps=(
 'journalctl' '_journalctl'
 'jq' '_jq'
 'jrnl' '_jrnl'
+'jupyter' '_jupyter'
 'kak' '_kak'
 'kdeconnect-cli' '_kdeconnect'
 'kernel-install' '_kernel-install'
@@ -1870,15 +1877,16 @@ autoload -Uz _afew _alacritty _android _archinstallscripts _archlinux-java \
             _cmake _coffee _conan _concourse _console \
             _coredumpctl _cppcheck _curl _dad _dart \
             _dget _dhcpcd _diana _direnv _docpad \
-            _dotnet _drush _ecdsautil _emacs _emacsclient \
-            _emulator _envdir _exportfs _fab _fail2ban-client \
-            _ffind _fleetctl _flutter _fvm _fwupdmgr \
-            _gas _ghc _gist _git-flow _git-pulls \
-            _git-revise _git-wtf _glances _golang _google \
-            _gpgconf _grpcurl _gtk-launch _hello _highlight \
-            _hledger _homestead _hostnamectl _httpie _ibus \
-            _img2sixel _include-what-you-use _inxi _jmeter _jmeter-plugins \
-            _jonas _journalctl _jrnl _kak _kernel-install \
+            _dotnet _drush _dunst _dunstctl _ecdsautil \
+            _emacs _emacsclient _emulator _envdir _exportfs \
+            _fab _fail2ban-client _ffind _fleetctl _flutter \
+            _fvm _fwupdmgr _gas _ghc _gist \
+            _git-flow _git-pulls _git-revise _git-wtf _glances \
+            _golang _google _gpgconf _grpcurl _gtk-launch \
+            _hello _highlight _hledger _homestead _hostnamectl \
+            _httpie _hyprctl _hyprpm _ibus _img2sixel \
+            _include-what-you-use _inxi _jmeter _jmeter-plugins _jonas \
+            _journalctl _jrnl _jupyter _kak _kernel-install \
             _kitchen _knife _language_codes _libinput _lilypond \
             _localectl _loginctl _lunchy _machinectl _mc \
             _meson _middleman _mina _mix _mkcert \

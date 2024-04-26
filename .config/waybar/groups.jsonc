@@ -1,6 +1,7 @@
 {
 	"group/stats": {
 		"orientation": "horizontal",
+		"drawer": {},
 		"modules": [
 			"battery",
 			"custom/disk",
@@ -10,19 +11,50 @@
 	},
 	"group/updates": {
 		"orientation": "horizontal",
+		"drawer": {},
 		"modules": [
-			"custom/pacman",
-			"custom/swaync"
+			"custom/swaync",
+			"custom/pacman"
 		]
 	},
 	"group/util": {
 		"orientation": "horizontal",
 		"modules": [
+			// "group/powerdrawer",
 			"backlight",
 			"wireplumber",
 			"idle_inhibitor",
-			"custom/power",
+			// "custom/power",
 			"custom/menu"
+		]
+	},
+	"group/clocks": {
+		"orientation": "horizontal",
+		"drawer": {},
+		"modules": [
+			"clock",
+			"clock#date"
+		]
+	},
+	"group/music": {
+		"orientation": "horizontal",
+		"drawer": {},
+		"modules": [
+			"mpris",
+			"mpris#title"
+		]
+	},
+	"group/powerdrawer": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-left-to-right": false
+		},
+		"modules": [
+			"custom/poweroff",
+			"custom/sessionlock",
+			"custom/suspend",
+			"custom/logout",
+			"custom/reboot"
 		]
 	}
 }

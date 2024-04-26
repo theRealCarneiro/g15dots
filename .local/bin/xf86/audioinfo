@@ -32,7 +32,7 @@ notify_volume () {
 
 	# notify
 	echo $vol $icon
-	notify-send -a 'xfctrl' -h string:x-canonical-private-synchronous:audio \
+	notify-send -e -a 'xfctrl' -h string:x-canonical-private-synchronous:audio \
 		'Volume' -h int:value:$vol -i $icon -t 1000
 }
 

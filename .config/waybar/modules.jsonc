@@ -85,14 +85,25 @@
 				  "today":      "<span color='#fb4934'><b><u>{}</u></b></span>"
 			}
 		},
-        "actions":  {
-			"on-click-right": "mode",
-			"on-click-forward": "tz_up",
-			"on-click-backward": "tz_down",
-			"on-scroll-up": "shift_up",
-			"on-scroll-down": "shift_down"
-		},
 		"interval": 1
+	},
+    "clock#date": {
+        "format": "{:%d/%m/%Y}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+			//"mode"          : "year",
+			"mode-mon-col"  : 3,
+			//"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"on-click-right": "mode",
+			"format": {
+				  "months":     "<span color='#EBDBB2'><b>{}</b></span>",
+				  "days":       "<span color='#dfdfdf'><b>{}</b></span>",
+				  "weeks":      "<span color='#fabd2f'><b>W{}</b></span>",
+				  "weekdays":   "<span color='#CC241D'><b>{}</b></span>",
+				  "today":      "<span color='#fb4934'><b><u>{}</u></b></span>"
+			}
+		}
     },
 
     "cpu": {
@@ -143,20 +154,36 @@
 	},
 
 	"mpris": {
-		"format": "{player_icon} {dynamic} {status_icon}",
-		"format-paused": "{player_icon} <i>{dynamic}</i> {status_icon}",
+		// "format": "{player_icon} {dynamic} {status_icon}",
+		// "format-paused": "{player_icon} <i>{dynamic}</i> {status_icon}",
+		"format": "{player_icon} {status_icon}",
+		"format-paused": "{player_icon} {status_icon}",
 		"title-len": 20,
 		"dynamic-len": 30,
 		"interval": 2,
 		"player-icons": {
-			"default": "󰗃",
-            "spotify": "",
+			"default": " ",
+			"firefox": " ",
+            "spotify": " ",
+			"brave": " ",
+			"chrome": " ",
+			"chromium": " ",
 			"mpv": "🎵"
 		},
 		"status-icons": {
-			"playing": "⏸",
-			"paused": "▶"
+			"playing": "",
+			"paused": ""
 		}
+	},
+
+	"mpris#title": {
+		"format": "{dynamic}",
+		"format-paused": "<i>{dynamic}</i>",
+		// "format": "{player_icon} {status_icon}",
+		// "format-paused": "{player_icon} {status_icon}",
+		"title-len": 20,
+		"dynamic-len": 30,
+		"interval": 2
 	},
 
 	"custom/playerctl": {
@@ -213,6 +240,7 @@
 	"custom/menu": {
 		"format": "󰣇",
 		"on-click": "sleep 0.1 && rofi -show drun",
+		"on-click-right": "sleep 0.1 && tofi-run"
 	},
 
 
@@ -267,7 +295,8 @@
             "default": ""
         },
 		"interval": 5,
-		"on-click-right": "checkcombupdates",
+		"on-click": "notify-send 'Updates' \"$(cat /tmp/updates_combined | sed 's/ .*-> / ->/g')\"",
+		"on-click-right": "checkcombupdates notify",
 		"on-click-middle": "$TERMINAL -e paru",
         "exec": "waypac"
 	},
@@ -290,5 +319,27 @@
     "custom/right-arrow-inverse": {
 		"format": "",
 		"tooltip": false
-    }
+    },
+	"custom/poweroff": {
+		"format": "",
+		"tooltip-format": "CU",
+		"on-click": "powermenu poweroff"
+	},
+	"custom/reboot": {
+		"format": "",
+		"tooltip-format": "CU",
+		"on-click": "powermenu reboot"
+	},
+	"custom/logout": {
+		"format": "",
+		"on-click": "powermenu logout"
+	},
+	"custom/suspend": {
+		"format": "",
+		"on-click": "powermenu suspend"
+	},
+	"custom/sessionlock": {
+		"format": "",
+		"on-click": "powermenu lock"
+	}
 }

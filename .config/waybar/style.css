@@ -3,7 +3,7 @@
 
 * {
 	border-radius: 0px;
-    font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrainsMono NF";
+    font-family: "SF Mono", "Font Awesome 6 Brands", "Font Awesome 6 Free Solid",  "JetBrainsMono NF";
 	font-weight: bold;
     font-size: 20px;
 }
@@ -28,17 +28,21 @@ tooltip {
 	color: @theme_text_color;
 }
 
+#music label,
+#clocks label,
 #stats label,
 #util label,
+#powerdrawer label,
 #updates label{
 	padding: 0 10px;
 }
 
-#clock,
+#clocks,
 #updates,
 #util,
-#mpris,
+#music,
 #stats,
+#powerdrawer,
 #tray {
 	color: #dfdfdf;
 	background-color: @theme_base_color;
