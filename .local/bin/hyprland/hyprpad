@@ -38,6 +38,8 @@ pady=$(( $mony + $height - $pad_height ))
 # check if hyprpad is running, then create/move window
 hyprctl clients | grep -q Hyprpad && toggle $padws $selws || create
 
+[ "$selws" = "special:hyprpad" ] && exit
+
 # resize and position
 hyprctl dispatch resizewindowpixel exact $width $pad_height,hyprpad
 hyprctl dispatch movewindowpixel exact $monx $pady,hyprpad

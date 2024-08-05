@@ -11,6 +11,7 @@ local packer = require('packer').startup(function(use)
 
 	use { 'lewis6991/gitsigns.nvim' }
 	use { 'norcalli/nvim-colorizer.lua' }
+	use { 'Mofiqul/vscode.nvim' }
 	use { 'folke/neodev.nvim' }
 
 	use {
@@ -91,7 +92,7 @@ local packer = require('packer').startup(function(use)
 end)
 
 require('plugins.lsp')
-require('plugins.neotest')
+--require('plugins.neotest')
 require('plugins.cmp')
 require('plugins.treesitter')
 require('plugins.tabline')
@@ -99,8 +100,9 @@ require('plugins.lualine')
 require('plugins.fern')
 require('plugins.comment')
 require('plugins.telescope')
+require('plugins.vscode')
 
-require('colorfig').setup()
+-- require('colorfig').setup()
 require('nvim-autopairs').setup {}
 require('colorizer').setup {}
 require('gitsigns').setup {}

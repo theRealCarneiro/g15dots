@@ -1248,3 +1248,5 @@ user_pref("media.gmp-provider.enabled", true);
 user_pref("media.gmp-gmpopenh264.enabled", true);
 user_pref("media.peerconnection.enabled", true);
 user_pref("browser.fullscreen.autohide", false);
+user_pref("webgl.disabled", false);
+user_pref("webgl.enable-webgl2", true);

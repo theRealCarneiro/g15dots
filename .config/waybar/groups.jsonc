@@ -11,9 +11,9 @@
 	},
 	"group/updates": {
 		"orientation": "horizontal",
-		"drawer": {},
 		"modules": [
 			"custom/swaync",
+			// "custom/email",
 			"custom/pacman"
 		]
 	},

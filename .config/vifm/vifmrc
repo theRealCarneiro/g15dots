@@ -469,7 +469,21 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " Filter-out build and temporary files
 "
  "filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
- filter /(__pycache__|\.py*test|\.pki|\.android|\.lmmsrc\.xml|.steampath|.steampid)/
+
+filter /(__pycache__|\.py*test|\.pki|\.android|\.lmmsrc\.xml|\.steampath|\.steampid)/
+
+" Home
+" filter /(\.pki|\.android|\.lmmsrc\.xml|\.steampath|\.steampid)/
+
+" py
+" filter /(__pycache__|\.py*test)/
+
+" c
+" filter /^.*\.o$/
+
+" nnoremap <space>fh :filter /(__pycache__|\.py*test|\.pki|\.android|\.lmmsrc\.xml|\.steampath|\.steampid|\.bundle|\.jekyll-cache)/ <cr>
+
+" nnoremap <space>fs :filter <cr>
 
 " ------------------------------------------------------------------------------
 

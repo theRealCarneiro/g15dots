@@ -1,18 +1,42 @@
 #!/bin/sh
-maildir=$HOME/.local/share/mail/gmail/INBOX/new
-#maildir=$HOME/.local/share/mail/gmail/INBOX/cur
-for i in $(ls $maildir); do
-	from=$(grep "From: " $maildir/$i | utf8-decode | sed 's/<//g; s/>//g; s/"/\\"/g')
-	subject=$(grep "Subject: " $maildir/$i | sed 's/.*;$//; s/"/\\"/g' | utf8-decode | sed '/^$/d')
+inboxnew=$HOME/.local/share/mail/gmail/INBOX/new
+inboxcur=$HOME/.local/share/mail/gmail/INBOX/cur
+inboxnewcount=$(ls $inboxnew | wc -c)
 
-	mail_info=$mail_info"__________________\\n"
-	mail_info=$mail_info$from"\\n"
-	mail_info=$mail_info$subject"\\n"
-	mail_info=$mail_info"------------------\\n"
+get_info () {
+	mailid=$1
+	from=$(grep "From: " $inboxnew/$mailid | utf8-decode | sed 's/<//g; s/>//g; s/"/\\"/g')
+	subject=$(grep "Subject: " $inboxnew/$mailid | sed 's/.*;$//; s/"/\\"/g' | utf8-decode | sed '/^$/d')
+	printf "%s" "$from\\n$subject\\n"
+}
+
+notify_new () {
+	for mailid in $(ls $inboxnew); do
+		mail_info=$(get_info "$mailid")
+		notify-send "Novos emails" "$mail_info" -i gmail-offline -a mbsync
+	done
+}
+
+print_new () {
+	for mailid in $(ls $inboxnew); do
+		mail_info=$mail_info"__________________\\n"
+		mail_info=$mail_info$(get_info "$mailid")
+		mail_info=$mail_info"------------------\\n"
+	done
+	printf "%s" "$(echo $mail_info | sed '/^$/d' | sed ':a;N;$!ba;s/\n/\\n/g')"
+}
+
+while getopts "n" opt; do
+	case $opt in
+		# notify
+		"n") notify=true;;
+	esac
 done
 
-#notify-send "Novos emails" "$mail_info" -i Mail
-[ $(ls $maildir | wc -c) != 0 ] && [ -z $1 ] && \
-	dunstify -a "Mail" -i Mail -r "1" "Novos emails" "$mail_info"
+[ "$inboxnewcount" = 0 ] && exit
 
-printf "%s" "$(echo $mail_info | sed '/^$/d' | sed ':a;N;$!ba;s/\n/\\n/g')"
+if [ "$notify" = true ]; then
+	notify_new
+else
+	print_new
+fi

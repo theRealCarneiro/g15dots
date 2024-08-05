@@ -1,8 +1,9 @@
 #!/bin/sh
-[ "$1" = "notify" ] && \
-	dunstify -a "Mail" -u low -i Mail -r "1" "Sincronizando email" "Procurando novos emails"
+# [ "$1" = "notify" ] && \
+	# dunstify -a "Mail" -u low -i Mail -r "1" "Sincronizando email" "Procurando novos emails"
 
-export GNUPGHOME="/home/gabriel/.config/gnupg"
-export PASSWORD_STORE_DIR="/home/gabriel/.local/share/.password-store" 
-mbsync -c /home/gabriel/.config/isync/mbsyncrc -a
+# export GNUPGHOME="/home/gabriel/.config/gnupg"
+# export PASSWORD_STORE_DIR="/home/gabriel/.local/share/.password-store" 
+mbsync -c ~/.config/isync/mbsyncrc -a
+mailfetch
 #mailcheck
