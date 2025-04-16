@@ -45,3 +45,8 @@ vim.keymap.set("n", "<leader>bh", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>br", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>bi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "<leader>bd", vim.lsp.buf.definition)
+
+-- Diagnostics
+-- vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float)
+-- vim.keymap.set("n", "<leader>dn", vim.diagnostic.jump)
+-- vim.keymap.set("n", "<leader>dN", vim.lsp.diagnostic.goto_prev)
