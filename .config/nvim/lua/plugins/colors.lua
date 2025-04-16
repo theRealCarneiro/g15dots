@@ -1,1 +1,0 @@
-/home/gabriel/.config/colorfig/generated/colors.lua
