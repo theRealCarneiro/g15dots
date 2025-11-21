@@ -1,0 +1,9 @@
+#!/bin/sh
+
+card=$(readlink /dev/dri/nvidia-dgpu)
+
+state=$(cat /sys/class/drm/${card}/device/power_state)
+
+class="$state"
+
+printf '{"text": "", "tooltip": "%s", "alt": "%s", "class": "%s"}\n' "$class" "$state" "$class"

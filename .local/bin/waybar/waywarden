@@ -1,0 +1,4 @@
+#!/bin/sh 
+
+alt=$(rbw unlocked >/dev/null 2>&1 && echo unlocked || echo locked)
+printf '{"text": "%s", "tooltip": "%s", "alt": "%s"}' "" "" "$alt"

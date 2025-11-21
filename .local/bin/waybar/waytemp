@@ -1,0 +1,28 @@
+#!/bin/sh
+
+sensor_list='amdgpu-pci-3400 dell_smm-virtual-0 nvme-pci-0200'
+grep_str='\(CPU\|GPU\|Ambient\|edge\|Composite\)'
+replace_str=''
+# temps=$(
+# 	sensors $sensor_list |
+# 	grep  -e $grep_str |
+# 	sed 's/GPU/NVidia/g; s/edge/AMDGPU/g; s/Composite/NVME/g' |
+# 	sort |
+# 	awk '{printf "%-10s%-10s\\n", $1, $2}' |
+# 	sed 's/..$//g'
+# )
+temps=$(
+	sensors $sensor_list | sed ':a;N;$!ba;s/\n/\\n/g'
+)
+text=$(echo $temps | grep Ambient | cut -d ' ' -f2 | cut -d '.' -f1 | tr -d '+')
+# text=100
+
+class='default'
+if [ "$text" -gt 90 ]; then
+	class="veryhot"
+elif [ "$text" -gt 80 ]; then
+	class="hot"
+fi
+
+
+printf '{"text": %s, "tooltip": "%s", "class": "%s", "percentage": %s}' "$text" "$temps" "$class" "$text"
