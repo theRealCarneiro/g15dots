@@ -8,7 +8,7 @@
 	border:				none;
 	columns:			5;
 	lines:				1;
-	font:				"SF Pro Display Medium 70";
+	font:				"Cozette 70";
 }
 
 configuration {
@@ -57,7 +57,7 @@ entry {
 }
 
 #textbox {
-	font:				"SF Pro Display 30";
+	font:				"Cozette 30";
 	border:				0px 0px 0px 0px;
 }
 

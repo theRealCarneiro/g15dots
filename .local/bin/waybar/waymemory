@@ -15,8 +15,14 @@ print () {
 	else 
 		text=$(free -m | awk '/^Mem.:/ {printf "%.1fGB/%.1fGB\n", ($2-$7)/1024, $2/1024}')
 	fi
-	tooltip="$(ps axch -o cmd:15,%mem --sort=-%mem | head -n 30 | sed ':a;N;$!ba;s/\n/\\n/g')"
-	printf "%s\n" "{\"text\": \"$text\", \"tooltip\": \"$tooltip\", \"class\": \"default\"}"
+	tooltip="$(
+		ps axch -o cmd:15,rss --sort=-rss |
+		awk '{printf "%-15s %6.1f MB\n", $1, $NF/1024}' |
+		head -n 30 |
+		sed ':a;N;$!ba;s/\n/\\n/g'
+	)"
+
+	printf '{"text": "%s", "tooltip": "%s", "class": "%s"}\n' "$text" "$tooltip" "default"
 }
 
 while true; do

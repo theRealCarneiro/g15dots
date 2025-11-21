@@ -108,7 +108,7 @@
 
 .notification-default-action:hover,
 .notification-action:hover {
-  -gtk-icon-effect: none;
+  /* -gtk-icon-effect: none; */
   background: @noti-bg-hover;
 }
 
@@ -290,8 +290,8 @@
 .widget-buttons-grid {
 	border-radius: 10px;
 	background: transparent;
-	font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrainsMono NF";
-	font-size: 35px;
+	/* font-family: "Cozette"; */
+	font-size: 25px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button{
@@ -354,7 +354,7 @@ font-size: 20px;
   padding: 8px;
   margin: 8px;
   border-radius: 15px;
-}
+// }
 
 .AnyName>button {
   background: transparent;
@@ -389,7 +389,7 @@ font-size: 20px;
   background-color: @noti-bg-alt;
   padding: 4px 8px 8px 8px;
   margin: 0px 8px 8px 8px;
-  border-radius: 15px
+  border-radius: 15px;
 }
 
 /* Backlight widget */

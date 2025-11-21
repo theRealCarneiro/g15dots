@@ -1,6 +1,6 @@
 #!/bin/sh
 
-files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk ctray'
+files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync imapnotify pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk ctray mangohud rbw'
 
 if pgrep Xorg > /dev/null 2>&1; then
 	menu='dmenu -i -p'
@@ -61,6 +61,7 @@ neofetch="$XDG_CONFIG_HOME/neofetch/config.conf"
 
 neomutt="$XDG_CONFIG_HOME/mutt/muttrc"
 mbsync="$XDG_CONFIG_HOME/isync/mbsyncrc"
+imapnotify="$XDG_CONFIG_HOME/imapnotify/"
 
 pywal="$XDG_CONFIG_HOME/wal"
 colorfig="$XDG_CONFIG_HOME/colorfig/"
@@ -85,5 +86,10 @@ qutebrowser="$XDG_CONFIG_HOME/qutebrowser/config.py"
 qmk="$XDG_CONFIG_HOME/qmk/qmk.ini"
 ctray="$XDG_CONFIG_HOME/ctray/config.json"
 
+mangohud="$XDG_CONFIG_HOME/MangoHud"
+
+rbw="$XDG_CONFIG_HOME/rbw"
+
+[ -z "$(eval "echo \$$choice")" ] && exit
 $TERMINAL -e $EDITOR "$(eval "echo \$$choice")"
 # $TERMINAL -e vifm "$(eval "echo \$$choice")"

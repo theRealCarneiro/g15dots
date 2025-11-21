@@ -6,7 +6,7 @@
     },
     {
         "item": "Exibição",
-        "command": "nwg-displays",
+        "command": "nwg-display",
         "icon": "video-display-symbolic"
     },
     {

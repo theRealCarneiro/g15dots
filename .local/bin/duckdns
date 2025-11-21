@@ -1,7 +1,18 @@
 #!/bin/sh
 
-URL="https://www.duckdns.org/update?domains="
-TOKEN="&token=$(pass duckdns/therealcarneiro)"
+IPV6=$(ip a show dev wlp4s0 dynamic | grep inet6 | sed 's/.*inet6 //g; s/\/.*//g')
+INTERFACE=wlp4s0
+URL="https://www.duckdns.org"
+TK='497e0a0f-5266-416b-a5cf-6f862c5da156'
+
+# URL="https://www.duckdns.org/update?domains="
+# TOKEN="&token=$(pass duckdns/therealcarneiro)"
+TOKEN="&token=$TK"
 DOMAINS="carneiros,therealcarneiro,thecarneiro"
-echo url="$URL$DOMAINS$TOKEN&ip=" | curl -k -o ~/.cache/duckdns/duck.log -K - && \
-	notify-send "duckdns" "$(cat $HOME/.cache/duckdns/duck.log)"
+# echo url="${URL}/update?domains=${DOMAINS}&token=$TK&ipv6=2804:2484:922c:4100:1c62:90b1:5f0a:1638&ip=" | curl -k -o ~/.cache/duckdns/duck.log -K - && \
+# 	notify-send "duckdns" "$(cat $HOME/.cache/duckdns/duck.log)"
+
+# echo url="${URL}/update?domains=${DOMAINS}&token=$TK&ipv6=2804:2484:922c:4100:1c62:90b1:5f0a:1638&ip=" | curl -k -o ~/.cache/duckdns/duck.log -K -
+REQ_URL="${URL}/update?domains=${DOMAINS}&token=${TK}&ipv6=${IPV6}"
+echo url="$REQ_URL" | curl -k -o ~/.cache/duckdns/duck.log -K -
+# echo $REQ_URL

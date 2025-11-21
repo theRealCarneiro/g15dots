@@ -5,7 +5,7 @@ export WM="bspwm"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export READER="zathura"
-export BROWSER="firefox"
+export BROWSER="zen-browser"
 export TERMFM="vifmrun"
 
 # Misc
@@ -20,6 +20,7 @@ export LIBSEAT_BACKEND=logind
 # Config
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ECLIPSE_HOME="$XDG_CONFIG_HOME/eclipse"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/.gtkrc-2.0"
 export CARGO_HOME="$XDG_CONFIG_HOME/cargo"
 export RUSTUP_HOME="$XDG_CONFIG_HOME/rustup"
@@ -42,8 +43,9 @@ export APP_PATH="$HOME/.config/stremio"
 # Cache
 export XDG_CACHE_HOME="$HOME/.cache"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-#export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+# export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+# export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 export MYSQL_HISTFILE="$XDG_CACHE_HOME/mysql_history"
 export PYHISTFILE="$XDG_CACHE_HOME/python/python_history"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
@@ -56,7 +58,7 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/.password-store"
 export GOPATH="$XDG_DATA_HOME/go"
 export PYVENV_ROOT="$XDG_DATA_HOME/python/venvs"
-export QMK_HOME="$HOME/Projects/qmk_firmware"
+# export QMK_HOME="$HOME/Projects/qmk_firmware"
 # export PYTHONPATH="${PYTHONPATH}:/my/other/path"
 
 

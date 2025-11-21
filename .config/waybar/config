@@ -3,7 +3,7 @@
 		"name": "Main",
 		"layer": "top",
 		"position": "top",
-		"output": ["eDP-1", "eDP-2"],
+		"output": ["eDP-1", "HDMI-A-1"],
 		"height": 42,
 		"spacing": 10,
 		"include": [
@@ -14,7 +14,6 @@
 		"modules-left": [
 			"group/updates",
 			"group/stats",
-			"group/clocks",
 			"group/music"
 		],
 
@@ -23,7 +22,8 @@
 		],
 
 		"modules-right": [
-			"tray",
+			"group/clocks",
+			"group/trey",
 			"group/util",
 			"group/powerdrawer"
 		]

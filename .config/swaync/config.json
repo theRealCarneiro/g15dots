@@ -89,17 +89,17 @@
 					"type": "toggle",
 					"active": true,
 					"command": "rfkill toggle bluetooth",
-					"update-command": "sh -c '[ $(bluetoothctl show | grep Powered | cut -d \" \" -f2) = no ] && echo false || echo true'"
+					"update-command": "sh -c '$(bluetooth show | grep on) && echo true || echo false'"
 				},
 				{
-					"label": "",
+					"label": "𜱪",
 					"type": "toggle",
 					"active": true,
 					"command": "hyprfxtoggle -silent",
 					"update-command": "sh -c '[ $(hyprfxtoggle -get) = 1 ] && echo true || echo false'"
 				},
 				{
-					"label": "",
+					"label": "Ⓖ",
 					"type": "toggle",
 					"active": false,
 					"command": "g15pc -t",
@@ -115,7 +115,7 @@
 			"label": ""
 		},
 		"backlight": {
-			"label": "󰃠",
+			"label": "𜱩",
 			"device": "nvidia_wmi_ec_backlight"
 		},
 		"menubar": {

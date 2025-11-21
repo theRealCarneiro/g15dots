@@ -12,12 +12,13 @@ toggle (){
 
 	# hide it if on same ws
 	[ "$padws" = "$selws" ] && selws=special:hyprpad
+	echo $selws
 
 	# move to selected workspace
-	hyprctl dispatch movetoworkspacesilent $selws,hyprpad
+	hyprctl dispatch movetoworkspacesilent $selws,class:hyprpad
 
 	# sleep 0.1
-	# [ "$selws" = "special:hyprpad" ] && hyprctl dispatch togglespecialworkspace hyprpad
+	# [ "$selws" = "special:hyprpad" ] && hyprctl dispatch togglespecialworkspace class:hyprpad
 }
 
 # get active and hyprpad workspaces and monitor
@@ -41,6 +42,6 @@ hyprctl clients | grep -q Hyprpad && toggle $padws $selws || create
 [ "$selws" = "special:hyprpad" ] && exit
 
 # resize and position
-hyprctl dispatch resizewindowpixel exact $width $pad_height,hyprpad
-hyprctl dispatch movewindowpixel exact $monx $pady,hyprpad
-hyprctl dispatch focuswindow hyprpad
+hyprctl dispatch resizewindowpixel exact $width $pad_height,class:hyprpad
+hyprctl dispatch movewindowpixel exact $monx $pady,class:hyprpad
+hyprctl dispatch focuswindow class:hyprpad

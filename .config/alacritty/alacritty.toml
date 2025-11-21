@@ -1,4 +1,4 @@
-import = ["/home/gabriel/.config/colorfig/generated/alacritty.toml"]
+general.import = ["/home/gabriel/.config/colorfig/generated/alacritty.toml"]
 
 [cursor]
 style = "Beam"
@@ -8,12 +8,12 @@ vi_mode_style = "Block"
 WINIT_X11_SCALE_FACTOR = "1"
 
 [font]
-size		=	14
+size		=	15
 offset		=	{ x = 0, y = 0 }
-bold		=	{ family = "JetBrainsMono NF", style = "Bold" }
-bold_italic =	{ family = "JetBrainsMono NF", style = "Bold Italic" }
-italic		=	{ family = "JetBrainsMono NF", style = "Italic" }
-normal		=	{ family = "JetBrainsMono NF", style = "Medium" }
+bold		=	{ family = "Cozette", style = "Bold" }
+bold_italic =	{ family = "Cozette", style = "Bold Italic" }
+italic		=	{ family = "Cozette", style = "Italic" }
+normal		=	{ family = "Cozette", style = "Medium" }
 
 [keyboard]
 bindings = [
@@ -30,4 +30,4 @@ bindings = [
 ]
 
 [window]
-opacity = 0.9
+opacity = 0.97

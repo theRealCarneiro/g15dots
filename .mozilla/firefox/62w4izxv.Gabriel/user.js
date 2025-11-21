@@ -794,11 +794,11 @@ user_pref("javascript.options.asmjs", false);
 // -------------------------------------
 // Disable Ion and baseline JIT to harden against JS exploits
 user_pref("javascript.options.ion", false);
-user_pref("javascript.options.baselinejit", false);
+user_pref("javascript.options.baselinejit", true);
 user_pref("javascript.options.jit_trustedprincipals", true); // [FF75+] [HIDDEN PREF]
 // -------------------------------------
 // Disable WebAssembly [FF52+]
-user_pref("javascript.options.wasm", false);
+user_pref("javascript.options.wasm", true);
 // -------------------------------------
 // Disable rendering of SVG OpenType fonts
 user_pref("gfx.font_rendering.opentype_svg.enabled", false);

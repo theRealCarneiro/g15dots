@@ -1,6 +1,7 @@
 -- Tabs
 vim.keymap.set('n', '<S-j>', 'gT')
 vim.keymap.set('n', '<S-k>', 'gt')
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>')
 
 -- Splits
 vim.keymap.set('n', '<C-h>', '<C-w>h')

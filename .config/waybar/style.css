@@ -3,9 +3,9 @@
 
 * {
 	border-radius: 0px;
-    font-family: "SF Mono", "Font Awesome 6 Brands", "Font Awesome 6 Free Solid",  "JetBrainsMono NF";
+    font-family: "Cozette";
 	font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 window#waybar {
@@ -20,12 +20,34 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+tooltip * {
+	/* border-radius: 15px; */
+	padding: 10px;
+	/* background-color: @theme_base_color; */
+	/* box-shadow: 0 4px 12px rgba(0,0,0,0.4); */
+}
+
 tooltip {
-    font-family: "SF Mono", "Font Awesome 6 Free Solid", "JetBrainsMono NF";
 	border-radius: 15px;
-    font-size: 20px;
 	background-color: @theme_base_color;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
+	/* box-shadow: inset 0 4px 12px rgba(0,0,0,0.4); */
+
+}
+
+tooltip label {
+    font-family: "Cozette";
+    font-size: 25px;
+	/* margin: 5px; */
 	color: @theme_text_color;
+}
+
+#custom-temps.hot {
+	color: @warning_color;
+}
+
+#custom-temps.veryhot {
+	color: @error_color;
 }
 
 #music label,
@@ -34,7 +56,8 @@ tooltip {
 #util label,
 #powerdrawer label,
 #updates label{
-	padding: 0 10px;
+	/*		 t  r  b   l*/
+	padding: 3px 10px 0px 10px;
 	/* margin: 4px 3px 4px 3px; */
 }
 
@@ -44,7 +67,8 @@ tooltip {
 #music,
 #stats,
 #powerdrawer,
-#tray {
+#trey {
+/* #tray { */
 	color: #dfdfdf;
 	background-color: @theme_base_color;
 	padding: 0 10px;
@@ -52,6 +76,14 @@ tooltip {
 	border-radius: 12px;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),	0 2px 6px 2px rgba(0, 0, 0, 0.3);
 }
+
+#custom-gpud3cold {
+  font-size: 28px;
+}
+
+/* #custom-gpud3cold label:hover { */
+/*   font-size: 28px; */
+/* } */
 
 /* #clocks > *, */
 /* #updates > *, */
@@ -70,7 +102,9 @@ tooltip {
 #music label:hover,
 #stats label:hover,
 #powerdrawer label:hover,
-#tray label:hover{
+#trey label:hover {
+/* #powerdrawer label:hover, */
+/* #tray label:hover{ */
 	font-size: 21px;
 }
 
@@ -102,8 +136,9 @@ tooltip {
 	border: none;
 }
 
-#workspaces > label {
-  font-size: 42px;
+#workspaces label {
+	font-size: 25px;
+	padding: 3px 3px 0px 3px;
 }
 
 #workspaces button.urgent {

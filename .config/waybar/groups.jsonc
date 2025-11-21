@@ -1,36 +1,63 @@
 {
 	"group/stats": {
 		"orientation": "horizontal",
-		"drawer": {},
+		// "drawer": {
+			// "click-to-reveal": true
+		// },
 		"modules": [
 			"battery",
 			"custom/disk",
 			"custom/memory",
-			"cpu"
+			"cpu",
+			"custom/temps"
 		]
 	},
 	"group/updates": {
 		"orientation": "horizontal",
+		// "drawer": {
+			// "click-to-reveal": true
+		// },
 		"modules": [
 			"custom/swaync",
 			// "custom/email",
 			"custom/pacman"
 		]
 	},
-	"group/util": {
+	"group/trey": {
 		"orientation": "horizontal",
+		"drawer": {
+			"transition-left-to-right": false
+			// "click-to-reveal": true
+		},
 		"modules": [
 			// "group/powerdrawer",
+			// "custom/gpud3cold",
+			// "custom/menu",
+			"tray"
+		]
+	},
+	"group/util": {
+		"orientation": "horizontal",
+		// "drawer": {
+			// "transition-left-to-right": false
+			// "click-to-reveal": true
+		// },
+		"modules": [
 			"backlight",
 			"wireplumber",
 			"idle_inhibitor",
-			// "custom/power",
+			"custom/bitwarden",
+			"custom/gpud3cold",
 			"custom/menu"
 		]
 	},
 	"group/clocks": {
 		"orientation": "horizontal",
-		"drawer": {},
+		"drawer": {
+			"children-class": "test",
+			"transition-left-to-right": false
+			// "click-to-reveal": true
+		},
 		"modules": [
 			"clock",
 			"clock#date"
@@ -47,6 +74,7 @@
 	"group/powerdrawer": {
 		"orientation": "horizontal",
 		"drawer": {
+			// "click-to-reveal": true,
 			"transition-left-to-right": false
 		},
 		"modules": [

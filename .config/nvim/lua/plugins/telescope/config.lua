@@ -1,4 +1,3 @@
-require('telescope-tabs').setup ({})
 require('telescope').setup ({
 	defaults = {
 		pickers = {
@@ -90,3 +89,11 @@ require('telescope').setup ({
  		},
  	}
 })
+
+require('telescope-tabs').setup ({})
+
+-- local telescope_utils = require('plugins.telescope.utils')
+-- vim.keymap.set('n', '<Leader>tf', telescope_utils.telescope_find_files_root)
+-- vim.keymap.set('n', '<Leader>tg', telescope_utils.telescope_live_grep_root)
+-- vim.keymap.set('n', '<Leader>td', ':Telescope diagnostics<CR>')
+-- vim.keymap.set('n', '<Leader>tt', ':Telescope telescope-tabs list_tabs<CR>')

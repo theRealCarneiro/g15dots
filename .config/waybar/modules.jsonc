@@ -3,12 +3,12 @@
 	"hyprland/workspaces": {
 		"format": "{icon}",
 		"format-icons": {
-			"empty": "<span font_desc='Font Awesome 6 Free Regular' rise='-1000'></span>",
-			"default": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>",
-			"active": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>",
-			"urgent": "<span font_desc='Font Awesome 6 Free Solid' rise='-1000'></span>"
+			"empty": "◦",
+			"default": "●",
+			"active": "●",
+			"urgent": "●"
 		},
-		"persistent_workspaces": {
+		"persistent-workspaces": {
 			"eDP-1": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
 			"eDP-2": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
 			"HDMI-A-1": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
@@ -56,22 +56,27 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
 
     "tray": {
-		"icon-size": 24,
-        "spacing": 10
+		"icon-size": 26,
+        "spacing": 10,
+		// "icons": {
+		// 	"blueman": "a"
+		// }
     },
 
     "clock": {
+		// "format": "{:%H:%M}",
 		"format": "{:%H:%M:%OS}",
-        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%H:%M:%OS %d/%m/%Y}",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%H:%M:%OS}",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"actions": {
+			// "on-click": "",
 			"on-click-right": "mode"
 		},
         "calendar": {
@@ -93,7 +98,7 @@
         "format": "{:%d/%m/%Y}",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"actions": {
-			"on-click-right": "mode"
+			// "on-click-right": "mode"
 		},
         "calendar": {
 			"mode"          : "year",
@@ -111,18 +116,27 @@
     },
 
     "cpu": {
+// 󰍛
         "format": " {usage}%",
 		"on-click": "cpu_eaters",
         "tooltip": false
     },
 
+    "custom/temps": {
+		"exec": "waytemp",
+		"return-type": "json",
+        "format": "{icon} {0}°C",
+		"interval": 5,
+        "format-icons": ["","", "", "", "", ""]
+    },
+
     "temperature": {
-        // "thermal-zone": 2,
+        "thermal-zone": 0,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""]
     },
 
     "network": {
@@ -138,7 +152,7 @@
     "wireplumber": {
 		"format": "{icon}",
 		"tooltip-format": "{node_name} {volume}%",
-		"format-muted": "",
+		"format-muted": "",
 		//"format-muted": "",
 		"on-scroll-up": "volctrl 5 +",
 		"on-scroll-down": "volctrl 5 -",
@@ -154,7 +168,7 @@
 		"device": "nvidia_wmi_ec_backlight",
 		"on-scroll-down": "brightctrl 5%-",
 		"on-scroll-up": "brightctrl 5%+",
-		"format-icons": ["󰃚", "󰃛", "󰃜", "󰃞", "󰃝", "󰃟", "󰃠"]
+		"format-icons": ["✛", "✰", "✬", "✲", "✱", "✴"]
 	},
 
 	"mpris": {
@@ -191,7 +205,7 @@
 	},
 
 	"custom/playerctl": {
-		"format": "{icon} {}",
+		"format": "{icon} {0}",
         "return-type": "json",
 		"max-length": 40,
         "format-icons": {
@@ -207,9 +221,9 @@
 
 	"custom/swaync": {
 		"tooltip": false,
-		"format": "{icon} {}",
+		"format": "{icon} {0}",
 		"format-icons": {
-			"none": "",
+			"none": "",
 			"inhibited-none": "",
 			"dnd-inhibited-none": "",
 			"dnd-none": "",
@@ -232,7 +246,7 @@
 	},
 
 	"custom/power": {
-		"format": "",
+		"format": "⏻",
         //"format-icons": {
             //"default": ""
         //},
@@ -241,35 +255,48 @@
 		//"exec": "echo POWER"
 	},
 
+	"custom/bitwarden": {
+		"format": "{icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        },
+		"on-click": "rbw unlocked && rbw lock || rbw unlock",
+        "return-type": "json",
+		"interval": 60,
+		"exec": "waywarden"
+	},
+
 	"custom/menu": {
-		"format": "󰣇",
+		"format": "",
 		"on-click": "sleep 0.1 && rofi -show drun",
 		"on-click-right": "sleep 0.1 && tofi-run"
 	},
 
 
 	"custom/memory": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "json",
         "format-icons": {
-            "default": ""
+            // "default": ""
+            "default": "▤"
         },
 		"on-click": "pkill -USR1 waymemory",
         "exec": "waymemory"
 	},
 
 	"custom/disk": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "json",
         "format-icons": {
-            "default": ""
+            "default": "🖫"
         },
 		"on-click": "pkill -USR1 waydisk",
         "exec": "waydisk"
 	},
 
 	"custom/gpu": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "text",
         "format-icons": {
             "default": ""
@@ -279,8 +306,19 @@
         "exec": "waygpu"
 	},
 
+	"custom/gpud3cold": {
+        "format": "{icon}",
+        "return-type": "json",
+        "format-icons": {
+			"D0": "",
+			"D3cold": ""
+        },
+		"interval": 3,
+        "exec": "wayd3cold"
+	},
+
 	"custom/email": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "json",
         "format-icons": {
             "empty": "",
@@ -293,10 +331,10 @@
 	},
 
 	"custom/pacman": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "json",
         "format-icons": {
-            "default": ""
+            "default": ""
         },
 		"interval": 5,
 		"on-click": "notify-send 'Updates' \"$(cat /tmp/updates_combined | sed 's/ .*-> / ->/g')\"",
@@ -325,29 +363,33 @@
 		"tooltip": false
     },
 	"custom/poweroff": {
-		"format": "",
-		"tooltip-format": "CU",
+		"format": "⏻",
+		"tooltip-format": "Poweroff",
 		"on-click": "powermenu poweroff"
 	},
 	"custom/reboot": {
-		"format": "",
-		"tooltip-format": "CU",
+		"format": "🢱",
+		"tooltip-format": "Reboot",
 		"on-click": "powermenu reboot"
 	},
 	"custom/logout": {
-		"format": "",
+		"format": "", // 
+		"tooltip-format": "Logout",
 		"on-click": "powermenu logout"
 	},
 	"custom/suspend": {
-		"format": "",
+		"format": "⏾",
+		"tooltip-format": "Suspend",
 		"on-click": "powermenu suspend"
 	},
 	"custom/sessionlock": {
 		"format": "",
+		"tooltip-format": "Lock Session",
 		"on-click": "powermenu lock"
-	},
-	"custom/aretha": {
-		"format": "A",
-		"on-click": "checkeba"
 	}
+ //    "hwclock": {
+	// 	"format": "{}",
+	// 	"exec": "date '+%H:%M:%S'",
+	// 	"interval": 1
+	// }
 }

@@ -10,6 +10,13 @@ export ICON_THEME="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')
 export CURSOR_THEME="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
 export FONT_NAME="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
 export GTK_KEY_THEME="$(grep 'gtk-key-theme' "$config" | sed 's/.*\s*=\s*//')"
+
+# echo $GTK_THEME
+# echo $ICON_THEME
+# echo $CURSOR_THEME
+# echo $FONT_NAME
+# echo $GTK_KEY_THEME
+
 gsettings set "$gnome_schema" gtk-theme $GTK_THEME
 gsettings set "$gnome_schema" icon-theme $ICON_THEME
 gsettings set "$gnome_schema" cursor-theme $CURSOR_THEME

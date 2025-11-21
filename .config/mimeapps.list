@@ -1,11 +1,11 @@
 [Default Applications]
 x-scheme-handler/nxm=modorganizer2-nxm-handler.desktop;
 x-scheme-handler/ror2mm=r2modman.desktop
-x-scheme-handler/http=firefox.desktop;brave-browser.desktop;
-x-scheme-handler/https=firefox.desktop;brave-browser.desktop;
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
 text/plain=nvim.desktop;
 text/plain=nvim.desktop;
-text/html=nvim.desktop;
+text/html=zen.desktop
 text/css=nvim.desktop;
 text/xml=nvim.desktop;
 text/x-shellscript=nvim.desktop;
@@ -29,6 +29,14 @@ image/png=imv.desktop;
 image/jpeg=imv.desktop;
 image/webp=imv.desktop;
 inode/directory=vifm.desktop;pcmanfm.desktop;
+x-scheme-handler/chrome=zen.desktop
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/xhtml+xml=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/x-extension-xht=zen.desktop
+x-scheme-handler/anytype=anytype.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;
@@ -37,3 +45,14 @@ application/json=nvim.desktop;
 image/png=imv.desktop;
 image/jpeg=imv.desktop;
 image/webp=imv.desktop;
+x-scheme-handler/http=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+x-scheme-handler/https=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+x-scheme-handler/chrome=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+text/html=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/x-extension-htm=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/x-extension-html=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/x-extension-shtml=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/xhtml+xml=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/x-extension-xhtml=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/x-extension-xht=zen-alpha.desktop;zen-beta.desktop;zen.desktop;
+application/octet-stream=nvim.desktop;
