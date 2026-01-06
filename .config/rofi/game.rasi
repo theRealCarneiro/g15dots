@@ -1,0 +1,162 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+@import "binds.rasi"
+
+configuration {
+	hover-select:					true;
+    show-icons:                     true;
+    disable-history:                false;
+	sidebar-mode: 					false;
+	font:							"SF Pro Display 12";
+}
+
+* {
+	
+    background-color:               transparent;
+	transparent:					rgba(0,0,0,0);
+    // background:                     #000000aa;
+    background:                     #2C2C2Cdf;
+    background-alt:              	#00000000;
+    background-bar:                 #f2f2f255;
+    foreground:                     #f2f2f2EE;
+    accent:			            	#ffffff66;
+    text-color:                     #BBBBBB;
+    text-color-selected:            #FFFFFF;
+}
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+	border:							0px;
+	fullscreen:						true;
+	border-color:					@border;
+    border-radius:                  0px;
+	width:							100%;
+	height:							100%;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						0.50% 1% 0% -0.5%;
+	background-color: 				@background-alt;
+	text-color: 					@foreground;
+	font:							"SF Pro Display 12";
+
+    width:                          100%;
+    margin:                         10px 0px 0px 30px;
+    text-color:                     @important;
+}
+
+textbox-prompt {
+    text-color:                     @background;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    expand:                         false;
+}
+
+listview {
+	border-color:					@transparent;
+    background-color:               @background-alt;
+    padding:                        0% 10% 0% 10%;
+    columns:                        6;
+    lines:                          2;
+    spacing:                        3%;
+    cycle:                          false;
+    dynamic:                        true;
+    layout:                         vertical;
+	flow:							horizontal;
+	padding: 60px;
+}
+
+inputbar-box {
+    children:                       [dummy, inputbar, dummy];
+    orientation:                    horizontal;
+    expand:                         false;
+}
+
+inputbar {
+    children:                       [textbox-prompt, entry];
+    margin:                         0px;
+    background-color:               @background-bar;
+    border:                         4px;
+    border-color:                   @background-bar;
+    border-radius:                  8px;
+	margin:							0px 0px 30px 0px;
+}
+
+mainbox {
+    children:                       [prompt, inputbar-box, listview];
+    padding:                        0px 0px;
+}
+
+element {
+	cursor:							pointer;
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  0%;
+    border:                         0px 4px solid 0px 4px;
+    border-radius:                  16;
+    padding:                        2.5% 0% 2.5% 0%;
+}
+
+element-text {
+	font:							"SF Pro Display 15";
+    horizontal-align:               0.5;
+    cursor:                         inherit;
+    text-color:						@text-color;
+}
+
+element selected {
+	// background-color:               @background-bar;
+	// text-color:                     @foreground;
+	// border:							0% 0% 0% 0%;
+	// border-radius:                  12px;
+    border-color:                  	@background-bar;
+    text-color:						@text-color-selected;
+}
+
+element alternate.normal {
+    background-color: @background-alt;
+    text-color:       @foreground;
+}
+
+element normal.normal {
+    background-color: @background-alt;
+    text-color:       @foreground;
+}
+
+element-icon {
+    padding:                        10px;
+    cursor:                         inherit;
+    size:                           25%;
+    margin:                         10px;
+}
+
+element-box {
+    children:                       [element-icon, element-text];
+    orientation:                    vertical;
+    expand:                         false;
+    cursor:                         pointer;
+}
+
+entry {
+    expand:                         false;
+    padding:                        8px;
+    margin:                         -6px;
+    horizontal-align:               0;
+    width:                          300;
+    background-color:               @background;
+    border:                         0px;
+    border-color:                   @primary;
+    border-radius:                  8px;
+    cursor:                         text;
+}
