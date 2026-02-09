@@ -7,16 +7,19 @@ toggle() {
 	[ -z $spid ] || kill $spid
 }
 
+awk_tooltip_str='{printf "%s\t %.2fGB/%.2fGB\t %.1f%\n", $6, $3/1024000, $2/1024000, $3*100/$2}'
+
 trap "toggle" USR1
 
 print () {
+	sizes="$(df -P --type=ext4 --type=btrfs | tail  -n +2)"
 	if [ $t -eq 0 ]; then
-		text=$(df -m | awk '$6 == "/" {printf "%.f%\n", $3*100/$2}')
+		text=$(echo "$sizes" | awk '$6 == "/" {printf "%.f%\n", $3*100/$2}')
 	else 
-		text=$(df -H | awk '$6 == "/" {print $3"B/"$2"B"}')
+		text=$(echo "$sizes" | awk '$6 == "/" {printf "%.fGB/%.fGB", $3/1024000, $2/1024000}')
 	fi
 
-	tooltip="$(df -h --type=ext4 --type=btrfs -P | tail -n +2 | awk '{print $6, $3"B/"$2"B", $5}' | column -tc2 | sed ':a;N;$!ba;s/\n/\\n/g')"
+	tooltip=$(echo "$sizes" | awk "$awk_tooltip_str" | column -tc2 | sed ':a;N;$!ba;s/\n/\\n/g')
 	printf '{"text": "%s", "tooltip": "%s", "class": "%s"}\n' "$text" "$tooltip" "default"
 }
 

@@ -6,4 +6,7 @@ state=$(cat /sys/class/drm/${card}/device/power_state)
 
 class="$state"
 
-printf '{"text": "", "tooltip": "%s", "alt": "%s", "class": "%s"}\n' "$class" "$state" "$class"
+[ -f "/tmp/nvidia-smi" ] && tooltip=$(cat /tmp/nvidia-smi | sed ':a;N;$!ba;s/\n/\\n/g')
+[ -z "$tooltip" ] && tooltip=$state
+
+printf '{"text": "", "tooltip": "%s", "alt": "%s", "class": "%s"}\n' "$tooltip" "$state" "$class"

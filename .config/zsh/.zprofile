@@ -37,7 +37,9 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export PM2_HOME="$XDG_CONFIG_HOME/pm2"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
-export PYTHONSTARTUP="$HOME/.local/bin/pynit.py"
+# export PYTHONSTARTUP="$HOME/.local/bin/pyinit.py"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export APP_PATH="$HOME/.config/stremio"
 
 # Cache
@@ -50,6 +52,11 @@ export MYSQL_HISTFILE="$XDG_CACHE_HOME/mysql_history"
 export PYHISTFILE="$XDG_CACHE_HOME/python/python_history"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
+# State
+export XDG_STATE_HOME="$HOME/.local/state"
+export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
+
+
 # Data
 export BIB="$HOME/Bibliotecas"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -60,10 +67,6 @@ export GOPATH="$XDG_DATA_HOME/go"
 export PYVENV_ROOT="$XDG_DATA_HOME/python/venvs"
 # export QMK_HOME="$HOME/Projects/qmk_firmware"
 # export PYTHONPATH="${PYTHONPATH}:/my/other/path"
-
-
-[ -f "/home/gabriel/.config/lf/icons" ] && \
-	. "/home/gabriel/.config/lf/icons"
 
 # Runit
 #export SVDIR=/run/runit/service # Runit services

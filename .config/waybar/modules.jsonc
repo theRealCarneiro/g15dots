@@ -6,14 +6,17 @@
 			"empty": "◦",
 			"default": "●",
 			"active": "●",
-			"urgent": "●"
+			"urgent": ""
 		},
-		"persistent-workspaces": {
-			"eDP-1": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-			"eDP-2": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-			"HDMI-A-1": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
-			"DP-1": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 ]
-		},
+		// "persistent-workspaces": {
+		// 	"include": "~/.config/waybar/hyprland_workspaces.jsonc"
+		// },
+		// "persistent-workspaces": {
+		// 	"eDP-1": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+		// 	"eDP-2": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+		// 	"HDMI-A-1": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+		// 	"DP-1": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 ]
+		// },
 		"on-click": "activate",
 		"on-scroll-up": "hyprwswalk +1",
 		"on-scroll-down": "hyprwswalk -1",
@@ -122,14 +125,6 @@
         "tooltip": false
     },
 
-    "custom/temps": {
-		"exec": "waytemp",
-		"return-type": "json",
-        "format": "{icon} {0}°C",
-		"interval": 5,
-        "format-icons": ["","", "", "", "", ""]
-    },
-
     "temperature": {
         "thermal-zone": 0,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -204,13 +199,34 @@
 		"interval": 2
 	},
 
+    "custom/temps": {
+		"exec": "waytemp",
+		"return-type": "json",
+        "format": "{icon} {0}°C",
+		"interval": 5,
+		"on-click": "",
+        "format-icons": ["","", "", "", "", ""]
+    },
+
+	"custom/cpu": {
+		"exec": "waycpu",
+        "format": "{icon} {0}%",
+        "format-icons": {
+            "default": ""
+        },
+		"on-click": "",
+		"on-click-right": "$TERMINAL -e htop",
+		"return-type": "json"
+	},
+
+
 	"custom/playerctl": {
 		"format": "{icon} {0}",
         "return-type": "json",
 		"max-length": 40,
         "format-icons": {
 			"brave": "",
-            "spotify": "",
+            "spotify": ""
             //"spotify": "<span color=\"#0f0\"></span>",
             //"chromium": "<span color=\"#f00\">輸</span>"
         },
@@ -273,7 +289,6 @@
 		"on-click-right": "sleep 0.1 && tofi-run"
 	},
 
-
 	"custom/memory": {
         "format": "{icon} {0}",
         "return-type": "json",
@@ -310,10 +325,11 @@
         "format": "{icon}",
         "return-type": "json",
         "format-icons": {
-			"D0": "",
+			"D0": "",
 			"D3cold": ""
         },
 		"interval": 3,
+		"on-click": "nvidia-smi > /tmp/nvidia-smi",
         "exec": "wayd3cold"
 	},
 

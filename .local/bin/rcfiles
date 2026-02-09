@@ -1,6 +1,6 @@
 #!/bin/sh
 
-files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync imapnotify pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk ctray mangohud rbw'
+files='hypr bspwm dwm spectrwm i3wm openbox sxhkd nvim lf polybar waybar rofi rofigames tofi Xresources xprofile xmodmap profile xinitrc dunst zsh bash spotifyd picom alacritty qutebrowser bcd pulse vifm neomutt mbsync imapnotify pywal jgmenu legendary minlau winetkg paru calcurse sxiv neofetch colorfig pulsemeeter git qtile kmonad systemd swaync pylint pycodestyle flake8 eww nwg_panel nwg_dock_hyprland nwg_bar nwg_drawer firefox qmk ctray mangohud rbw'
 
 if pgrep Xorg > /dev/null 2>&1; then
 	menu='dmenu -i -p'
@@ -44,6 +44,7 @@ waybar="$XDG_CONFIG_HOME/waybar/"
 eww="$XDG_CONFIG_HOME/eww"
 
 rofi="$XDG_CONFIG_HOME/rofi/config.rasi"
+rofigames="$XDG_CONFIG_HOME/rofi-games/config.toml"
 tofi="$XDG_CONFIG_HOME/tofi/config"
 jgmenu="$XDG_CONFIG_HOME/jgmenu/jgmenurc"
 

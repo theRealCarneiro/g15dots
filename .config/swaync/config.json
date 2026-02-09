@@ -89,7 +89,7 @@
 					"type": "toggle",
 					"active": true,
 					"command": "rfkill toggle bluetooth",
-					"update-command": "sh -c '$(bluetooth show | grep on) && echo true || echo false'"
+					"update-command": "sh -c 'bluetooth | grep on && echo true || echo false'"
 				},
 				{
 					"label": "𜱪",

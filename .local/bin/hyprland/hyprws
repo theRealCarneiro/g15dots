@@ -4,8 +4,8 @@ action=$1
 workspace=$2
 
 monid=$(hyprctl monitors -j | jq '.[] | select(.focused==true) | .id')
-selws=$monid$workspace
-echo $selws
+monitor_factor="${monid}0"  # mon 0 --> 00, mon 1 --> 10, mon 2 ->> 20...
+selws=$(($monitor_factor + $workspace))  # ws 1 mon 1 --> ws 11, ws 1 mon 2 --> 21
 
 case $action in
 	"focus") hyprctl dispatch workspace $selws ;;

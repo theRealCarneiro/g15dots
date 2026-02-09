@@ -105,7 +105,13 @@ tooltip label {
 #trey label:hover {
 /* #powerdrawer label:hover, */
 /* #tray label:hover{ */
-	font-size: 21px;
+	/* font-weight: bold; */
+	/* margin: 2px; */
+	/* border: 0px inset @theme_text_color ; */
+	/* border-bottom: 20px; */
+	/* border-bottom: 1px red; */
+	/* font-size: 40px; */
+	color: @theme_unfocused_fg_color;
 }
 
 #workspaces button.active {
