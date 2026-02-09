@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+import os
+import json
+import argparse
+import yaml
+
+
+HOME_PATH = os.getenv('HOME')
+DOTCONFIG_PATH = os.path.join(HOME_PATH, '.config')
+CONFIG_PATH = os.getenv('XDG_CONFIG_HOME', os.path.join(DOTCONFIG_PATH))
+R2_CONFIG_PATH = os.path.join(CONFIG_PATH, 'r2modmanPlus-local')
+
+
+def open_yaml(mods_file_path):
+    with open(mods_file_path, 'r') as file:
+        try:
+            data = yaml.safe_load(file)
+            return data
+        except yaml.YAMLError as expt:
+            print(f"Error parsing YAML: {expt}")
+            return None
+
+
+def open_manifest(manifest_path):
+    with open(manifest_path, 'r') as file:
+        try:
+            data = json.load(file)
+            return data
+        except yaml.YAMLError as expt:
+            print(f"Error parsing YAML: {expt}")
+            return None
+
+
+def parse_mods(mod_list):
+    mod_list_str = []
+    for mod in mod_list:
+        vn = mod['versionNumber']
+        name = mod['name']
+        modname = f'{name}-{vn["major"]}.{vn["minor"]}.{vn["patch"]}'
+        mod_list_str.append(modname)
+
+    return mod_list_str
+
+
+def main():
+    parse_desc = 'Export BepInEx game profile mod list'
+    parse_game_name = ''
+    parse_prof_name = 'Specify a profile, will use \'Default\' if not set'
+    parse_pack_path = 'Specify a modpack path to update dependencies list'
+
+    parser = argparse.ArgumentParser(description=parse_desc)
+    parser.add_argument('-g', '--game', help=parse_game_name)
+    parser.add_argument('-m', '--modpack', help=parse_pack_path)
+    parser.add_argument('-p', '--profile', default='Default',
+                        help=parse_prof_name)
+
+    args = parser.parse_args()
+
+    game = args.game
+    profile = args.profile
+    modpack = args.modpack
+
+    profile_path = os.path.join(R2_CONFIG_PATH, game, 'profiles', profile)
+    mods_file_path = os.path.join(profile_path, 'mods.yml')
+
+    mod_list = open_yaml(mods_file_path)
+    mod_list_str = parse_mods(mod_list)
+
+    if modpack is None:
+        print(mod_list_str)
+        return 0
+
+    manifest_path = os.path.join(modpack, 'manifest.json')
+    manifest = open_manifest(manifest_path)
+    manifest['dependencies'] = mod_list_str
+    with open(manifest_path, 'w', encoding='utf-8') as manifest_file:
+        json.dump(manifest, manifest_file, indent='\t', separators=(',', ': '))
+
+    return 0
+
+
+if __name__ == '__main__':
+    main()

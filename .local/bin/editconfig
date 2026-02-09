@@ -1,0 +1,15 @@
+#!/bin/sh
+
+
+if pgrep Xorg > /dev/null 2>&1; then
+	menu='dmenu -i -p'
+else
+	menu='tofi --prompt-text'
+fi
+
+files=$(ls -p $XDG_CONFIG_HOME/ | grep '/' | tr -d '/')
+choice=$(printf "%b" "$files" | sort | $menu "Config: ")
+
+[ -z "$choice" ] && exit
+
+$TERMINAL -e $EDITOR "$XDG_CONFIG_HOME/$choice"

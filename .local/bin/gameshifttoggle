@@ -1,0 +1,4 @@
+#!/bin/sh
+
+g15pc -t && notify-send -a 'gameshift' -u low -e -r 1 -i alien_grey Gameshift "$( [ $(g15pc -gg) = True ] && echo 'Activated' || echo 'Deactivated')"
+# notify-send -a 'gameshift' -u low -r 1 -i alien_grey Gameshift "Activated"

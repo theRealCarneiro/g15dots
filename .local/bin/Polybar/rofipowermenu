@@ -1,0 +1,21 @@
+#!/bin/sh
+
+options='\n\n\n\n'
+menu=$1
+shift
+args=$@
+
+if [ -z $menu ]; then
+	menu="rofi"
+	args="-dmenu -config $XDG_CONFIG_HOME/rofi/theme.rasi -x11"
+fi
+
+escolha=$(printf "%b" "$options" | $menu $args)
+
+case $escolha in
+	   "") poweroff;;
+	   "") reboot;;
+	   "") wayland-logout;;
+	   "") systemctl suspend;;
+	   "") loginctl lock-session;;
+esac

@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+
+
+POWER_OPTIONS = {
+    'poweroff': ('poweroff', 'system-shutdown-symbolic lock-session'),
+    'reboot': ('reboot', 'system-reboot-symbolic-logout'),
+    'logout': ('wayland', 'application-exit-symbolic'),
+    'suspend': ('systemctl', 'system-suspend-symbolic suspend'),
+    'lock': ('loginctl lock-session', 'org.gnome.Settings-screen-lock-symbolic'),
+}
+
+
+def main():
+    option = sys.argv[1]
+    command, icon = POWER_OPTIONS[option]
+    input_response = subprocess.run([
+        'zenity', '--question', '--title', 'Power',
+        '--text', f'Are you really sure you want to {option}', '--icon', icon],
+        capture_output=True, text=True, check=False
+    )
+
+    if input_response.returncode != 0:
+        return 1
+
+    subprocess.run(command.split(' '), check=False)
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+passwords=$(rbw list)
+[ -z "$passwords" ] &&  exit 0
+
+choice=$(echo "$passwords" | tofi)
+[ -z "$choice" ] && exit 0
+
+rbw get "$choice" | wl-copy -n

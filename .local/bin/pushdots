@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git --git-dir=$DOTBARE_DIR --work-tree=$HOME commit -m 'daily update'
+git --git-dir=$DOTBARE_DIR --work-tree=$HOME push

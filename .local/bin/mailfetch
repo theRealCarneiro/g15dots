@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+import os
+import sys
+import mailbox
+from email.header import decode_header, make_header
+
+XDG_DATA_HOME = os.environ.get('XDG_DATA_HOME')
+MAILDIR_PATH = os.path.join(XDG_DATA_HOME, 'mail/gmail/INBOX')
+
+XDG_CACHE_HOME = os.environ.get('XDG_CACHE_HOME')
+MAILCACHE_PATH = os.path.join(XDG_CACHE_HOME, 'mailcache/timestamp')
+
+
+def notify_send(title, message):
+    os.system(f'notify-send "{title}" "{message}" -a mailfetch -i gmail-offline')
+
+
+def decode_mime_words(header):
+    decoded_header = make_header(decode_header(header))
+    return str(decoded_header)
+
+
+def get_saved_timestamp():
+    with open(MAILCACHE_PATH, 'r', encoding='utf-8') as file:
+        timestamp = file.read()
+
+    return float(timestamp.strip() or 0)
+
+
+def set_saved_timestamp(timestamp):
+    with open(MAILCACHE_PATH, 'w', encoding='utf-8') as file:
+        file.write(str(timestamp))
+
+
+def main():
+    maildir = mailbox.Maildir(MAILDIR_PATH, factory=None)
+    last_timestamp = get_saved_timestamp()
+    new_last_timestamp = last_timestamp
+    for mail in maildir:
+        # ignore emails that are not new
+        if mail.get_subdir() != 'new':
+            continue
+
+        timestamp = mail.get_date()
+        new_last_timestamp = max(new_last_timestamp, timestamp)
+
+        # ignore emails from before timestamp
+        if timestamp <= last_timestamp:
+            continue
+
+        # notify
+        from_decoded = decode_mime_words(mail['from'])
+        subject_decoded = decode_mime_words(mail['subject'])
+        # print(from_decoded, subject_decoded, timestamp)
+        notify_send(from_decoded, subject_decoded)
+
+    # print(new_last_timestamp)
+    set_saved_timestamp(new_last_timestamp)
+
+
+if __name__ == '__main__':
+    sys.exit(main())

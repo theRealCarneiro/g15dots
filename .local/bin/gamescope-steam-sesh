@@ -1,0 +1,3 @@
+#!/bin/sh
+
+STEAM_MULTIPLE_XWAYLANDS=1 gamescope -e -W 1920 -H 1080 -r 165 --prefer-vk-device 1002:1681 --xwayland-count 2 --hdr-enabled -- steam -gamepadui -steamdeck -steamos3

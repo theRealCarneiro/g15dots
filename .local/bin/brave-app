@@ -1,0 +1,10 @@
+#!/bin/sh
+
+app=$1
+app_id=$2
+
+if [ -z "$app_id" ]; then
+	brave --user-data-dir="$XDG_DATA_HOME/brave-apps/$app" --class=brave-app
+else
+	brave --user-data-dir="$XDG_DATA_HOME/brave-apps/$app" --class=brave-app --app-id=$app_id --kiosk
+fi

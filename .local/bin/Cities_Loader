@@ -1,0 +1,19 @@
+#!/bin/sh
+
+GAMES='/data/games/gamedata'
+XDG_DATA_HOME=${XDG_DATA_HOME-$HOME/.local/share}
+
+GAMEPATH="$GAMES/Cities_Skylines"
+GAME_DATA_PATH="$XDG_DATA_HOME/Colossal Order/Cities_Skylines"
+MODS_PATH="$XDG_DATA_HOME/Colossal Order/Cities_Skylines/Addons/Mods"
+
+cd "$GAMEPATH"
+
+doorstop_libname="doorstop.so"
+doorstop_dir=$PWD
+export LD_LIBRARY_PATH=${doorstop_dir}:${LD_LIBRARY_PATH};
+export LD_PRELOAD=$LD_PRELOAD:$doorstop_libname;
+export DOORSTOP_ENABLE=TRUE;
+export DOORSTOP_INVOKE_DLL_PATH="$MODS_PATH/2041457644/PatchLoader/PatchLoader.dll";
+
+SDL_VIDEODRIVER=x11 prime-run ./Cities.x64 $@

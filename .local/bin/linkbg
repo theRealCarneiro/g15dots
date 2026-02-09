@@ -1,0 +1,10 @@
+#!/bin/sh
+
+CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+walpath="$1"
+
+[ -z $walpath ] && exit 1
+
+# ln -s $walpath $CONFIG_HOME/wallpaper.${walpath#*\.}
+# convert "$walpath" $CONFIG_HOME/wallpaper.png
+echo "$walpath" > $CONFIG_HOME/wallpaper

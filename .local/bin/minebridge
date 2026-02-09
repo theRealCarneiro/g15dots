@@ -1,0 +1,8 @@
+#!/bin/sh
+
+ydotool key --hold CTRL_L KEY_S
+
+while true; do
+	ydotool click 0x01
+	sleep 0.5
+done

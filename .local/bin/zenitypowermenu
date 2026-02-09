@@ -1,0 +1,22 @@
+#!/bin/sh
+
+icons='\n\n\n\n'
+choice=$1
+
+zenity --question --text="Are you really sure you want to $choice?" || exit
+
+case $escolha in
+	"poweroff") poweroff;;
+	"reboot") reboot;;
+	"logout") wayland-logout;;
+	"suspend") systemctl suspend;;
+	"lock") loginctl lock-session;;
+	"*") zenity --error "CUZAO DO XARALHO";;
+esac
+
+
+"org.gnome.Settings-screen-lock-symbolic"
+"application-exit-symbolic"
+"system-reboot-symbolic"
+"system-suspend-symbolic"
+"system-shutdown-symbolic"

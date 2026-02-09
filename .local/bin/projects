@@ -1,0 +1,16 @@
+#!/bin/sh
+
+PROJECTS_DIR=$HOME/Projects
+
+if pgrep Xorg; then
+	MENU='dmenu -i -p'
+else
+	MENU='tofi --prompt-text'
+fi
+
+projects=$(ls $PROJECTS_DIR | sort)
+choice=$(printf "$projects" | $MENU "Abrir projeto: ")
+
+[ -z "$choice" ] && exit 1
+
+$TERMINAL -e vifm "$PROJECTS_DIR/$choice"

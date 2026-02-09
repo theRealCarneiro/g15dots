@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for i in $(sudo ufw status | sed '1,/--/d; /v6/d; /^$/d' | awk '{print $1}'); do
+	comment=$(sudo ufw status | grep $i | sed "/v6/d; s/.*# //g")
+	[ -z "$comment" ] && sudo ufw $1 $i && continue
+	sudo ufw $1 $i comment $comment
+	# echo $comment
+done

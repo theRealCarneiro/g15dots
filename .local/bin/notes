@@ -1,0 +1,24 @@
+#!/bin/sh
+
+NOTES_DIR=${NOTES_DIR:-$HOME/Projects/nvimnotes}
+cd $NOTES_DIR
+
+if [ -z "$1" ]; then
+	nvim
+
+elif [ "$1" = "--daily" ]; then
+	month_dir=daily/$(date "+%Y")/$(date "+%m")
+	daily_note_path=$month_dir/$(date "+%d").md
+	mkdir -p $month_dir
+	[ -f "$daily_note_path" ] || echo \# $(date "+%A %d/%m/%4Y, dia %j") > $daily_note_path
+	nvim $daily_note_path
+
+elif [ "$1" = "--rm" ]; then
+	echo "Deleting $2"; 
+	[ -f "$2" ] && rm $2
+	
+else
+	mkdir -p $(dirname $1)
+	[ -f "$1" ] || touch $NOTES_DIR/$1
+	nvim $NOTES_DIR/$1
+fi
