@@ -1,0 +1,22 @@
+return {
+	blur = {
+		enabled = 1,
+		size = 4, -- minimum 1
+		passes = 1, -- minimum 1
+		new_optimizations = true
+	},
+	rounding = 10,
+	rounding_power = 10,
+	shadow = {
+		enabled = true,
+		range = 15,
+		render_power = 1,
+		-- # ignore_window = 1,
+		offset = "3 3",
+		color = "rgba(000000a0)",
+		scale = 1
+	},
+
+	dim_inactive = false,
+	dim_strength = 0.3
+}
