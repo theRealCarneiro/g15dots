@@ -13,6 +13,7 @@ vim.o.softtabstop = 4
 vim.o.mouse = 'a'
 vim.o.encoding = 'utf-8'
 vim.o.clipboard = ''
+-- vim.o.backupcopy = 'yes'
 vim.o.undodir = vim.env.XDG_CACHE_HOME .. '/nvim/undodir,/tmp'
 vim.o.backupdir = vim.env.XDG_CACHE_HOME .. '/nvim/backup,/tmp'
 

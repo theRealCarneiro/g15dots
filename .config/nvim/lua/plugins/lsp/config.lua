@@ -4,6 +4,7 @@ require('mason-lspconfig').setup()
 
 local lspconfig = require('lspconfig')
 local pylsp = require('plugins.lsp.providers.pylsp')
+local lua_ls = require('plugins.lsp.providers.lua_ls')
 
 --vim.lsp.set_log_level("debug")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -14,7 +15,7 @@ end)
 
 
 lspconfig.pylsp.setup(pylsp)
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup(lua_ls)
 lspconfig.clangd.setup({})
 lspconfig.ts_ls.setup({})
 lspconfig.jsonls.setup({})
