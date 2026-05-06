@@ -12,11 +12,10 @@ toggle (){
 
 	# hide it if on same ws
 	[ "$padws" = "$selws" ] && selws=special:hyprpad
-	echo $selws
+	# echo $selws
 
 	# move to selected workspace
-	hyprctl dispatch movetoworkspacesilent $selws,class:hyprpad
-
+	hyprctl dispatch "hl.dsp.window.move({ workspace = '$selws', window = 'class:hyprpad', follow = false })"
 	# sleep 0.1
 	# [ "$selws" = "special:hyprpad" ] && hyprctl dispatch togglespecialworkspace class:hyprpad
 }
@@ -42,6 +41,6 @@ hyprctl clients | grep -q Hyprpad && toggle $padws $selws || create
 [ "$selws" = "special:hyprpad" ] && exit
 
 # resize and position
-hyprctl dispatch resizewindowpixel exact $width $pad_height,class:hyprpad
-hyprctl dispatch movewindowpixel exact $monx $pady,class:hyprpad
-hyprctl dispatch focuswindow class:hyprpad
+hyprctl dispatch "hl.dsp.window.resize({ x = $width, y = $pad_height, window = 'class:hyprpad' })"
+hyprctl dispatch "hl.dsp.window.move({ x = $monx, y = $pady, window = 'class:hyprpad' })"
+hyprctl dispatch "hl.dsp.focus({ window = 'class:hyprpad' })"
