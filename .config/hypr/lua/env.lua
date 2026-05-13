@@ -19,6 +19,12 @@ hl.env("NVD_BACKEND", "direct")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
+-- hl.env("WLR_DRM_DEVICES","/dev/dri/amd-igpu:/dev/dri/nvidia-dgpu")
+-- hl.env("AQ_DRM_DEVICES", "/dev/dri/amd-igpu:/dev/dri/nvidia-dgpu")
+
+hl.env("WLR_DRM_DEVICES","/dev/dri/amd-igpu")
+hl.env("AQ_DRM_DEVICES", "/dev/dri/amd-igpu")
+
 -- # env = HYPRCURSOR_THEME, Bibata-Modern-Ice
 -- # env = HYPRCURSOR_SIZE, 30
 -- # env = GBM_BACKEND,nvidia-drm

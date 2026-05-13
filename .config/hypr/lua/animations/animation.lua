@@ -3,16 +3,7 @@ hl.animation({
 	speed = 4,
 	-- bezier = "overshot",
 	spring = "gold",
-	style = "slide left",
-	enabled = true
-})
-
-hl.animation({
-	leaf = "windowsOut",
-	speed = 10,
-	bezier = "default",
-	-- spring = "rubber",
-	style = "gnomed",
+	style = "slide",
 	enabled = true
 })
 
@@ -48,6 +39,15 @@ hl.animation({
 	style = "slide bottom",
 	enabled = true
 })
+
+-- hl.animation({
+-- 	leaf = "layersOut",
+-- 	speed = 2,
+-- 	-- bezier = "overshot",
+-- 	spring = "rubber",
+-- 	style = "popin",
+-- 	enabled = true
+-- })
 
 hl.animation({
 	leaf = "fade",

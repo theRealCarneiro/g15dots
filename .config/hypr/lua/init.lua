@@ -1,0 +1,8 @@
+require("lua/env")
+require("lua/config")
+require("lua/binds")
+require("lua/monitors")
+require("lua/rules")
+require("lua/animations")
+require("lua/devices")
+require("lua/startup")

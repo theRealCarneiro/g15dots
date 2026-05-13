@@ -5,13 +5,14 @@ local bg = "0xff" .. gtk_color("theme_base_color")
 return {
 	gaps_in = 10,
 	gaps_out = 15,
-	border_size = 2,
+	border_size = 3,
 	col = {
 		active_border = main,
 		inactive_border = bg,
 	},
 
-	layout = "master",
+	-- layout = "scrolling",
+	layout = "scrolling",
 	allow_tearing = true,
 	resize_on_border = true,
 	hover_icon_on_border = true,

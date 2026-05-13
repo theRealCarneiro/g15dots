@@ -128,3 +128,4 @@ hl.window_rule({
 	match = { workspace = "w[t0]" },
 	border_size = 0
 })
+
