@@ -1,9 +1,2 @@
-return {
-	'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',
-	dependencies = {
-		{ "luckasRanarison/tree-sitter-hypr" }
-	},
-	config = function ()
-		require('plugins.treesitter.config')
-	end
-}
+vim.pack.add({'https://github.com/nvim-treesitter/nvim-treesitter'})
+require('plugins.treesitter.config')

@@ -25,3 +25,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = 'fern',
 	group = glyph_palette,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "fern",
+	callback = function()
+		vim.opt_local.cursorline = true
+
+		vim.api.nvim_set_hl(0, "CursorLine", {
+			link = "Visual"
+		})
+	end,
+})

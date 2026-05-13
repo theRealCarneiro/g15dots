@@ -1,2 +1,13 @@
-return {
-}
+require('plugins.vscode')
+require('plugins.autopairs')
+require('plugins.colorizer')
+require('plugins.fern')
+require('plugins.gitsigns')
+require('plugins.lspconfig')
+require('plugins.lualine')
+require('plugins.neodev')
+require('plugins.tabline')
+require('plugins.telescope')
+require('plugins.treesitter')
+-- require('plugins.catppuccin')
+-- require('plugins.tokyonight')

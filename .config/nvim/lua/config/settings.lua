@@ -17,4 +17,15 @@ vim.o.clipboard = ''
 vim.o.undodir = vim.env.XDG_CACHE_HOME .. '/nvim/undodir,/tmp'
 vim.o.backupdir = vim.env.XDG_CACHE_HOME .. '/nvim/backup,/tmp'
 
-vim.diagnostic.config({ virtual_text = true })
+-- Auto complete
+vim.opt.completeopt = { "menu", "menuone", "noselect", "fuzzy", "popup" }
+vim.o.complete = ".,w,b,u,t,i"
+vim.o.autocomplete = true
+vim.o.autocompletedelay = 150
+
+vim.diagnostic.config({
+	virtual_text = true,
+	float = {
+		border = "rounded",
+	},
+})
