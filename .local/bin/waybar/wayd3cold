@@ -1,8 +1,10 @@
 #!/bin/sh
 
 card=$(readlink /dev/dri/nvidia-dgpu)
+card_path="/sys/class/drm/${card}/device/power_state"
+state="missing"
 
-state=$(cat /sys/class/drm/${card}/device/power_state)
+[ -f $card_path ] && state=$(cat $card_path)
 
 class="$state"
 

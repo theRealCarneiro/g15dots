@@ -3,7 +3,7 @@
 passwords=$(rbw list)
 [ -z "$passwords" ] &&  exit 0
 
-choice=$(echo "$passwords" | tofi)
+choice=$(echo "$passwords" | tofi --ascii-input=true)
 [ -z "$choice" ] && exit 0
 
 rbw get "$choice" | wl-copy -n

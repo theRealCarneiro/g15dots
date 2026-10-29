@@ -56,6 +56,9 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export XDG_STATE_HOME="$HOME/.local/state"
 export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
 
+# Projects
+export XDG_PROJECTS_DIR="$HOME/Projects"
+
 
 # Data
 export BIB="$HOME/Bibliotecas"

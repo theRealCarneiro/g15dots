@@ -79,6 +79,7 @@
 		},
 		"modules": [
 			"custom/poweroff",
+			"custom/dpms",
 			"custom/sessionlock",
 			"custom/suspend",
 			"custom/logout",

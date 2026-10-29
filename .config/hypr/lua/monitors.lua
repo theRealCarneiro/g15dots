@@ -14,3 +14,20 @@ hl.monitor({
 	scale = 1,
 	vrr = false
 })
+
+hl.monitor({
+	output = "desc:LG Electronics 27GN7 0x0007AD7D",
+	mode = "1920x1080@240.00",
+	-- cm = hdr
+	-- supports_hdr = 0
+	-- supports_wide_color = 0
+	-- sdr_min_luminance = 0.005
+	-- sdr_max_luminance = 203
+	-- min_luminance = 
+	-- sdrbrightness = 1.2
+	-- sdrsaturation = 0.9
+	-- bitdepth = 10
+	-- position = "0x0",
+	scale = 1,
+	vrr = false
+})

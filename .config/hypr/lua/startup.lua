@@ -17,9 +17,9 @@ hl.on("hyprland.start", function ()
 
 	-- bar/pannel
 	hl.exec_cmd("systemd-cat -t waybar waybar")
+	-- hl.exec_cmd("systemd-cat -t ags ags run")
 
 	-- notification center
-	-- hl.exec_cmd("env VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json swaync")
 	hl.exec_cmd("systemd-cat -t swaync swaync")
 
 	hl.exec_cmd("systemd-cat -t hypridle hypridle")

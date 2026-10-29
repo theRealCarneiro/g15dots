@@ -1,3 +1,5 @@
+togglefit = require('lua/scripts/fittoggle')
+
 hl.bind(
 	"SUPER + l",
 	hl.dsp.layout("focus right"),
@@ -100,11 +102,11 @@ hl.bind(
 -- 	{ description = "Promote window" }
 -- )
 
-hl.bind(
-	"SUPER + M",
-	hl.dsp.layout("colresize +conf"),
-	{ description = "Promote window" }
-)
+-- hl.bind(
+-- 	"SUPER + M",
+-- 	hl.dsp.layout("colresize +conf"),
+-- 	{ description = "Promote window" }
+-- )
 
 hl.bind(
 	"SUPER + mouse_down",
@@ -126,11 +128,22 @@ hl.bind(
 	}
 )
 
+hl.bind(
+	"SUPER + space",
+	hl.dsp.layout("colresize +conf"),
+	-- togglefit,
+	{
+		description = "Toggle fit state",
+		-- repeating = true,
+		-- mouse = true
+	}
+)
+
 -- hl.bind(
 -- 	"SUPER + space",
--- 	hl.dsp.layout("consume_or_expel next"),
+-- 	togglefit,
 -- 	{
--- 		description = "Scroll backwards",
+-- 		description = "Toggle fit state",
 -- 		-- repeating = true,
 -- 		-- mouse = true
 -- 	}

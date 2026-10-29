@@ -1,7 +1,18 @@
--- Remove border when only one window
+-- Remove border on floating window
 hl.window_rule({
 	name = "floating",
 	match = { float = true },
+	border_size = 0
+})
+
+-- Remove border when there 1 or less windows in workspace
+hl.window_rule({
+	match = { workspace = "w[t1]" },
+	border_size = 0
+})
+
+hl.window_rule({
+	match = { workspace = "w[t0]" },
 	border_size = 0
 })
 
@@ -70,6 +81,7 @@ hl.window_rule({
 
 hl.window_rule({
 	name = "xwaylandvideobridge",
+	match = { class = "xwaylandvideobridge" },
 	opacity = "0.0 override",
 	size = "1 1",
 	no_anim = true,
@@ -117,15 +129,5 @@ hl.window_rule({
 hl.window_rule({
 	match = { class = "zapzap" },
 	workspace = 2
-})
-
-hl.window_rule({
-	match = { workspace = "w[t1]" },
-	border_size = 0
-})
-
-hl.window_rule({
-	match = { workspace = "w[t0]" },
-	border_size = 0
 })
 

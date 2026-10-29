@@ -20,7 +20,7 @@ function M.move (selected_workspace)
 	return function()
 		local target_workspace = get_target_workspace(selected_workspace)
 		-- hl.notification.create({text = target_workspace, duration = 2000})
-		hl.dispatch(hl.dsp.window.move { workspace = target_workspace, silent = true })
+		hl.dispatch(hl.dsp.window.move { workspace = target_workspace, silent = true, follow = false })
 	end
 end
 

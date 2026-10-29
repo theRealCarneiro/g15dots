@@ -36,7 +36,7 @@ hl.animation({
 	speed = 2,
 	-- bezier = "overshot",
 	spring = "rubber",
-	style = "slide bottom",
+	style = "slide top",
 	enabled = true
 })
 

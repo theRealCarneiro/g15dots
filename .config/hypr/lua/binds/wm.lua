@@ -53,15 +53,27 @@ hl.bind(
 
 hl.bind(
 	"SUPER + f",
-	hl.dsp.window.fullscreen("fullscreen"),
+	hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle", layout_aware = false}),
 	{ description = "Toggle active window fullscreen state" }
 )
 
 hl.bind(
-	"SUPER + SHIFT + f",
-	hl.dsp.window.float(),
-	{ description = "Toggle active window floating state" }
+	"SUPER + CTRL + f",
+	hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle", layout_aware = true}),
+	{ description = "Toggle active window fullscreen state" }
 )
+
+hl.bind(
+	"SUPER + m",
+	hl.dsp.window.fullscreen({mode = "maximized", action = "toggle", layout_aware = false}),
+	{ description = "Toggle active window fullscreen state" }
+)
+
+-- hl.bind(
+-- 	"SUPER + SHIFT + f",
+-- 	hl.dsp.window.float(),
+-- 	{ description = "Toggle active window floating state" }
+-- )
 
 hl.bind(
 	 "SUPER + CTRL + TAB",

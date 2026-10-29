@@ -6,11 +6,13 @@
     font-family: "Cozette";
 	font-weight: bold;
     font-size: 25px;
+	/* color: @theme_fg_color; */
 }
 
 window#waybar {
 	border: none;
-	background-color: alpha(@theme_base_color, 0.8);
+	/* background-color: alpha(@theme_base_color, 0.8); */
+	background-color: @transparent;
 	transition-property: background-color;
 	box-shadow: none;
 	transition-duration: .5s;
@@ -69,7 +71,8 @@ tooltip label {
 #powerdrawer,
 #trey {
 /* #tray { */
-	color: #dfdfdf;
+	/* color: #dfdfdf; */
+	color: @theme_fg_color;
 	background-color: @theme_base_color;
 	padding: 0 10px;
 	margin: 4px 3px 4px 3px;
@@ -133,11 +136,13 @@ tooltip label {
 	box-shadow: 0px 0px;
     background-color: transparent;
     /*color: @theme_text_color;*/
-	color:#dfdfdf;
+	/* color:#dfdfdf; */
+	color: @theme_fg_color;
 }
 
 #workspaces button:hover {
-	color: #a0a0a0;
+	/* color: #a0a0a0; */
+	color: @theme_unfocused_fg_color;
 	box-shadow: none;
 	border: none;
 }
